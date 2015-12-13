@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD41C1D3D7200175973 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD61C1D3DAF00175973 /* MessageTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1893DDD91C1D3DE200175973 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD81C1D3DE200175973 /* HomeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1893DDDB1C1D3E0C00175973 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDDA1C1D3E0C00175973 /* DiscoverTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1893DDDD1C1D3E2900175973 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDDC1C1D3E2900175973 /* ProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1893DDDF1C1D479900175973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1893DDDE1C1D479900175973 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDE01C1D875600175973 /* MaintabBar.swift */; settings = {ASSET_TAGS = (); }; };
-		1893DDE31C1D99FB00175973 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDE21C1D99FB00175973 /* BaseTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD41C1D3D7200175973 /* MainViewController.swift */; };
+		1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD61C1D3DAF00175973 /* MessageTableViewController.swift */; };
+		1893DDD91C1D3DE200175973 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD81C1D3DE200175973 /* HomeTableViewController.swift */; };
+		1893DDDB1C1D3E0C00175973 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDDA1C1D3E0C00175973 /* DiscoverTableViewController.swift */; };
+		1893DDDD1C1D3E2900175973 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDDC1C1D3E2900175973 /* ProfileTableViewController.swift */; };
+		1893DDDF1C1D479900175973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1893DDDE1C1D479900175973 /* Assets.xcassets */; };
+		1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDE01C1D875600175973 /* MaintabBar.swift */; };
+		1893DDE31C1D99FB00175973 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDE21C1D99FB00175973 /* BaseTableViewController.swift */; };
 		189BF26D1C1D1A8B00332249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BF26C1C1D1A8B00332249 /* AppDelegate.swift */; };
+		71467E801C1DCAFE009599F3 /* VisitorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71467E7F1C1DCAFE009599F3 /* VisitorLoginView.swift */; };
+		71467E821C1DCBED009599F3 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71467E811C1DCBED009599F3 /* Common.swift */; };
 		E4DAD1EFF2284C1AFFF701DA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8271AAECA86247E833D819 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		189BF26C1C1D1A8B00332249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		189BF2781C1D1A8B00332249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E3C8947415643AC53F521E3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		71467E7F1C1DCAFE009599F3 /* VisitorLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoginView.swift; sourceTree = "<group>"; };
+		71467E811C1DCBED009599F3 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		AE8271AAECA86247E833D819 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C585E14E432319A73E10AF54 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +76,7 @@
 		1893DDCC1C1D390F00175973 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				71467E811C1DCBED009599F3 /* Common.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 		1893DDCF1C1D390F00175973 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				71467E7E1C1DCABC009599F3 /* VisitorLoginView */,
 				1893DDD41C1D3D7200175973 /* MainViewController.swift */,
 				1893DDE01C1D875600175973 /* MaintabBar.swift */,
 				1893DDE21C1D99FB00175973 /* BaseTableViewController.swift */,
@@ -160,6 +166,15 @@
 			);
 			name = Pods;
 			sourceTree = "<group>";
+		};
+		71467E7E1C1DCABC009599F3 /* VisitorLoginView */ = {
+			isa = PBXGroup;
+			children = (
+				71467E7F1C1DCAFE009599F3 /* VisitorLoginView.swift */,
+			);
+			name = VisitorLoginView;
+			path = Weibo/Classes/Module/Main/VisitorLoginView;
+			sourceTree = SOURCE_ROOT;
 		};
 		F155223FC2A22E47E77C24C8 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -296,6 +311,8 @@
 				1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */,
 				1893DDDB1C1D3E0C00175973 /* DiscoverTableViewController.swift in Sources */,
 				1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */,
+				71467E801C1DCAFE009599F3 /* VisitorLoginView.swift in Sources */,
+				71467E821C1DCBED009599F3 /* Common.swift in Sources */,
 				1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
