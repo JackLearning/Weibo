@@ -46,11 +46,11 @@
 		1893DDCB1C1D390F00175973 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				1893DDD11C1D390F00175973 /* Profile */,
-				1893DDD01C1D390F00175973 /* Message */,
 				1893DDCF1C1D390F00175973 /* Main */,
+				1893DDD01C1D390F00175973 /* Message */,
 				1893DDCE1C1D390F00175973 /* Home */,
 				1893DDCD1C1D390F00175973 /* Discover */,
+				1893DDD11C1D390F00175973 /* Profile */,
 			);
 			path = Module;
 			sourceTree = "<group>";
