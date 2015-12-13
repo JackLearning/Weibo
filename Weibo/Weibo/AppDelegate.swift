@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置根控制器
         
         window?.rootViewController = MainViewController()
-                
+        
         return true
     }
 
