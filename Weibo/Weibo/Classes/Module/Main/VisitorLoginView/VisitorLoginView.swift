@@ -84,8 +84,7 @@ class VisitorLoginView: UIView {
         addConstraint(NSLayoutConstraint(item: registerBtn, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 35))
         
         
-        
-        
+        backgroundColor = UIColor(white: 0.93, alpha: 1)        
         
         
     }
