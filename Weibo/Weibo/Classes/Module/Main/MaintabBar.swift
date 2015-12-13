@@ -17,6 +17,9 @@ class MaintabBar: UITabBar {
     
     override init(frame: CGRect) {
          super.init(frame: frame)
+        
+        // 添加按钮
+        addSubview(composeBtn)
     
 }
 
@@ -30,6 +33,10 @@ class MaintabBar: UITabBar {
          //fatalError("init(coder:) has not been implemented")
         
         super.init(coder: aDecoder)
+        addSubview(composeBtn)
+
+        
+        
     }
   
   
@@ -64,8 +71,38 @@ class MaintabBar: UITabBar {
             }
             
         }
+       //设置加号按钮的位置
         
+        composeBtn.frame = CGRectOffset(rect, 2 * w, -20)
+        
+        bringSubviewToFront(composeBtn)
         
     }
+    
+  
+    
+  
+    
+    // 懒加载 加号按钮
+    lazy var composeBtn :UIButton = {
+        
+        // 自定义样式
+        let btn = UIButton()
+        
+        btn.setImage(UIImage(named: "tabbar_compose_icon_add"), forState:.Normal)
+        
+        btn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: .Highlighted)
+        
+        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: .Normal)
+        
+        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: .Highlighted)
+        
+        // 更改背景视图,自动设置大小
+        btn.sizeToFit()
+        
+        return btn
+        
+        }()
+    
       
 }
