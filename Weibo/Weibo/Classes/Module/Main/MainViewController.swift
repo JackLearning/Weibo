@@ -15,6 +15,16 @@ class MainViewController: UITabBarController {
         
         // Do any additional setup after loading the view.
         
+        print(tabBar.classForCoder)
+        
+        let mainTabBar  = MaintabBar()
+        
+        setValue(mainTabBar, forKey: "tabBar")
+        
+        print(tabBar.classForCoder)
+        
+        // 添加子视图控制器
+        
         addChildViewControllers()
     }
 
@@ -30,8 +40,7 @@ class MainViewController: UITabBarController {
         
     }
     
-    
-    
+         
     private func addChildViewController(vc:UIViewController,title:String,imageName:String) {
         
         self.tabBar.tintColor = UIColor.orangeColor()
