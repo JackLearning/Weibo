@@ -11,7 +11,7 @@ import UIKit
 class BaseTableViewController: UITableViewController {
 
    // 设置用户是否登录的标记
-    var userLogin = true
+    var userLogin = false
     
     //加油子视图  准备所有的视图层次关系
     //苹果专门为手码开发准备的 一旦实现了该方法  xib/ sb 自动失效
@@ -33,10 +33,8 @@ class BaseTableViewController: UITableViewController {
        // 自定义的访客视图
         private func  setVisitorLoginView(){
             
-            let v = UIView()
-            
-            v.backgroundColor = UIColor.redColor()
-            
+            let v = VisitorLoginView()
+                         
             view = v
             
         }
