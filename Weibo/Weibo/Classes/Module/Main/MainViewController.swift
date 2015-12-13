@@ -9,7 +9,17 @@
 import UIKit
 
 class MainViewController: UITabBarController {
-
+// 必选属性
+    let mainTabBar  = MaintabBar()
+ // composeBtn 的点击方法
+ @objc   private func composeBtnDidClick() {
+        
+        print(__FUNCTION__)
+        
+  }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,7 +27,8 @@ class MainViewController: UITabBarController {
         
         print(tabBar.classForCoder)
         
-        let mainTabBar  = MaintabBar()
+        
+        mainTabBar.composeBtn.addTarget(self, action: "composeBtnDidClick", forControlEvents:.TouchUpInside)
         
         setValue(mainTabBar, forKey: "tabBar")
         
