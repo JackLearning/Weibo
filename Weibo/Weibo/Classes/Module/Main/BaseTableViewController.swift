@@ -25,7 +25,7 @@ class BaseTableViewController: UITableViewController {
             super.loadView()
         }else {
             
-            
+            setVisitorLoginView()
         }
         
     }
@@ -41,20 +41,22 @@ class BaseTableViewController: UITableViewController {
             
         }
         
-        
-       
-    
-    
-    
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(view.bounds)
         
     }
 
+    
+    override func viewWillLayoutSubviews() {
+         super.viewWillLayoutSubviews()
+        
+        print(view.bounds)
+    }
+    
+    
     
     // MARK: - Table view data source
 
