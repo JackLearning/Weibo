@@ -10,6 +10,27 @@ import  UIKit
 
 class VisitorLoginView: UIView {
     
+   // 对外提供设置访客视图信息的方法
+    func setupInfo(tipText:String,imageName:String?) {
+        tipLabel.text = tipText
+        if let name = imageName {
+            
+            //不是首页
+            circleView.image = UIImage(named: name)
+            // 隐藏大房子
+            largeIcon.hidden = true
+            // 将circleView移动到视图的最顶层
+            bringSubviewToFront(circleView)
+        }else {
+            // 是首页
+        }
+        
+        
+        
+    }
+    
+    
+    
     override init(frame: CGRect) {
         //调用super.init
         super.init(frame: frame)
@@ -84,7 +105,7 @@ class VisitorLoginView: UIView {
         addConstraint(NSLayoutConstraint(item: registerBtn, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 35))
         
         
-        backgroundColor = UIColor(white: 0.93, alpha: 1)        
+        backgroundColor = UIColor(white: 0.93, alpha: 1)
         
         
     }
@@ -122,7 +143,7 @@ class VisitorLoginView: UIView {
         btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState: .Normal)
         btn.setTitle("登录", forState: .Normal)
         btn.titleLabel?.font = UIFont.systemFontOfSize(15)
-        btn.setTitleColor(themeColor, forState: .Normal)
+        btn.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         btn.sizeToFit()
         return btn
     }()
