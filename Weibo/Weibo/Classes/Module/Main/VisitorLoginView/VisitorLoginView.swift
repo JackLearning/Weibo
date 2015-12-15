@@ -83,6 +83,11 @@ class VisitorLoginView: UIView {
     
     //设置所有的子视图
     private func setupUI() {
+        
+        
+         addSubview(backView)
+        
+        
         addSubview(largeIcon)
         addSubview(circleView)
         addSubview(tipLabel)
@@ -144,13 +149,58 @@ class VisitorLoginView: UIView {
         addConstraint(NSLayoutConstraint(item: registerBtn, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 35))
         
         
-        backgroundColor = UIColor(white: 0.93, alpha: 1)
+      
         
+        
+    
+    
+    //设置背景视图的约束 可视化的布局语言
+    //OC 中可选项 一般使用 按位 或枚举选项  swift中直接指定数组
+    //metrics:约束数值字典 [String: 数值],
+    addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[backView]-0-|", options: [], metrics: nil, views: ["backView": backView]))
+    
+    addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[backView]-(-35)-[regBtn]", options: [], metrics: nil, views: ["backView": backView,"regBtn":registerBtn]))
+        
+        
+        
+        
+          backgroundColor = UIColor(white: 0.93, alpha: 1)
+        
+        // 添加点击事件
+        registerBtn.addTarget(self, action: "registerBtnDidClick", forControlEvents: .TouchUpInside)
+        loginBtn.addTarget(self, action: "loginBtnDidClcik", forControlEvents:.TouchUpInside)
+        
+        
+        
+    
+    }
+    
+    //MARK:按钮的监听事件
+    @objc private func registerBtnDidClick() {
+        
+         // 代理调用协议方法,如果为nil 就不会执行该方法
+        visitorViewDelegate?.userWillRegister()
+    }
+    
+    @objc private func loginBtnDidClcik() {
+        
+        //判断代理是否为空 && 是否响应方法  userWillLogin? 表示的是判断是否可以响应方法
+        
+        visitorViewDelegate?.userWillLogin?()
         
     }
     
     
+    
+    
+    
+    
+    
+    
     //懒加载所有的子视图
+   // 背景遮罩
+    private lazy var backView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
+    
     private lazy var largeIcon: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
     private lazy var circleView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
     
