@@ -160,7 +160,11 @@ extension OAuthViewController:UIWebViewDelegate {
                     let uid = dict["uid"] as! String
                     self.loadUserInfo(token,uid:uid)
                     
-                    
+                    // 字典转模型
+                    let userAccount = UserAccount(dict: dict as! [String : AnyObject])
+                    print("=========")
+                    print(userAccount)
+                    print("==========")
                     
                 }
                 
@@ -192,7 +196,7 @@ extension OAuthViewController:UIWebViewDelegate {
                         let name = dict["name"] as! String
                        
                         print(avatar_large,name)
-                                             
+                        
                     }
                     
                     
