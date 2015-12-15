@@ -8,7 +8,29 @@
 
 import  UIKit
 
+
+// 定义协议
+@objc protocol VisitorLoginViewDelegate:NSObjectProtocol {
+    
+    // 声明协议方法
+    // 用户将要登录
+    optional func userWillLogin()
+    //用户将要注册
+    func userWillRegister()
+    
+    
+}
+
+
+
+
 class VisitorLoginView: UIView {
+    
+    // 定义代理属性
+    // 同样要用weak,swift默认都是strong
+    weak var visitorViewDelegate: VisitorLoginViewDelegate?
+    
+    
     
    // 对外提供设置访客视图信息的方法
     func setupInfo(tipText:String,imageName:String?) {
@@ -23,11 +45,30 @@ class VisitorLoginView: UIView {
             bringSubviewToFront(circleView)
         }else {
             // 是首页
+            // 做动画
+            startAnimation()
+            
+            
         }
+    
         
+    }
+   
+    private func startAnimation() {
+        
+        let anim = CABasicAnimation(keyPath: "transform.rotation")
+        // 设置动画属性
+        anim.repeatCount = MAXFLOAT
+        anim.duration = 20.0
+        anim.toValue = 2*M_PI
+        //当动画完毕或者页面失去活跃状态动画不移除图层
+        anim.removedOnCompletion  = false
+        // 添加动画
+        circleView.layer.addAnimation(anim, forKey: nil)
         
         
     }
+    
     
     
     

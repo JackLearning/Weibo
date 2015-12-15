@@ -8,10 +8,14 @@
 
 import UIKit
 
-class BaseTableViewController: UITableViewController {
+// 遵守协议,并且实现代理方法,否则会报错
+class BaseTableViewController: UITableViewController,VisitorLoginViewDelegate{
 
    // 设置用户是否登录的标记
     var userLogin = false
+    
+    // 新建访客视图的属性
+    var visitorLoginView:VisitorLoginView?
     
     //加油子视图  准备所有的视图层次关系
     //苹果专门为手码开发准备的 一旦实现了该方法  xib/ sb 自动失效
@@ -33,12 +37,30 @@ class BaseTableViewController: UITableViewController {
        // 自定义的访客视图
         private func  setVisitorLoginView(){
             
-            let v = VisitorLoginView()
-                         
-            view = v
+//            let v = VisitorLoginView()
+//            view = v
+            
+            visitorLoginView = VisitorLoginView()
+            // 设置当前类为代理,替VisitorLoginView 干活,并把处理的结果返回给VisitorLoginView
+            
+            visitorLoginView?.visitorViewDelegate = self
+            
+            view = visitorLoginView
+            
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "userWillLogin")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "userWillRegister")
             
         }
         
+    
+    // 实现代理方法
+    func userWillLogin() {
+         print(__FUNCTION__)
+    }
+    func userWillRegister() {
+         print(__FUNCTION__)
+    }
+    
     
     
     override func viewDidLoad() {
