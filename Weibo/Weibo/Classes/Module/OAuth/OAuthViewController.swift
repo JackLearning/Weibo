@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import AFNetworking
 
 class OAuthViewController: UIViewController {
     
@@ -97,14 +98,12 @@ extension OAuthViewController:UIWebViewDelegate {
 
     // 屏蔽掉那些我们不希望加载的页面,只加载我们想要加载的页面
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-         print(request.URL)
+//         print(request.URL)
         
       // 根据我们的需求,去屏蔽一些url
         guard let urlString = request.URL?.absoluteString else {
-            
-            return false
-            
-        }
+           return false
+      }
         
         if urlString.hasPrefix("https://api.weibo.com/") {
             
@@ -112,7 +111,7 @@ extension OAuthViewController:UIWebViewDelegate {
             return true
             
         }
-        if urlString.hasPrefix("http://www.baidu.com") {
+        if !urlString.hasPrefix("http://www.baidu.com") {
             
             //一定不是请求成功的回调,不希望加载
             return  false
@@ -131,14 +130,37 @@ extension OAuthViewController:UIWebViewDelegate {
             let codeStr = "code="
             let code = q.substringFromIndex(codeStr.endIndex)
             
-            print(code)
-            //
+            //print(code)
+           loadAccessToken(code)
             
         }
         
         
         return true
     }
+    
+ // MARK: 加载用户token(请求标识)
+    private func loadAccessToken(code: String) {
+        
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+        let parameters = ["client_id":client_id,"client_secret":client_secret,"grant_type":"authorization_code","code":code,"redirect_uri":redirect_uri]
+        
+        let AFN = AFHTTPSessionManager()
+        
+        AFN.responseSerializer.acceptableContentTypes?.insert("text/plain")
+        AFN.POST(urlString, parameters: parameters, progress: { (p) -> Void in
+            print(p)
+            }, success: { (_, result) -> Void in
+                print(result)
+            }) { (__, error) -> Void in
+                print(error)
+        }
+        
+    
+        
+    }
+    
+       
     
     
     
