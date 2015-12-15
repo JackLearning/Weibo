@@ -31,11 +31,6 @@ class OAuthViewController: UIViewController {
     
     
     
-    
-    
-    
-    
-    
     override func loadView() {
          view = webView
         // 设置代理
@@ -104,11 +99,46 @@ extension OAuthViewController:UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
          print(request.URL)
         
+      // 根据我们的需求,去屏蔽一些url
+        guard let urlString = request.URL?.absoluteString else {
+            
+            return false
+            
+        }
+        
+        if urlString.hasPrefix("https://api.weibo.com/") {
+            
+            // 有这个前缀的是我们希望加载的页面
+            return true
+            
+        }
+        if urlString.hasPrefix("http://www.baidu.com") {
+            
+            //一定不是请求成功的回调,不希望加载
+            return  false
+            
+        }
+        
+       // 程序走到这里,我们已经屏蔽了我们不需要的回调
+        print(urlString)
+        
+        // 解析字符串的code码
+        // query 获取url 中参数部分
+        let query = request.URL?.query
+        
+        if let q = query {
+            // 字符串的截取操作
+            let codeStr = "code="
+            let code = q.substringFromIndex(codeStr.endIndex)
+            
+            print(code)
+            //
+            
+        }
+        
+        
         return true
     }
-    
-    
-    
     
     
     
