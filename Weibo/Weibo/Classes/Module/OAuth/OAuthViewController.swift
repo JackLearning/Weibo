@@ -152,6 +152,19 @@ extension OAuthViewController:UIWebViewDelegate {
             print(p)
             }, success: { (_, result) -> Void in
                 print(result)
+               // 获取token成功
+                // 根据token 就可以拿到用户的信息
+                if let dict = result {
+                    // 强转,强行作为字符串使用
+                    let token = dict["access_token"] as! String
+                    let uid = dict["uid"] as! String
+                    self.loadUserInfo(token,uid:uid)
+                    
+                    
+                    
+                }
+                
+                
             }) { (__, error) -> Void in
                 print(error)
         }
@@ -160,7 +173,47 @@ extension OAuthViewController:UIWebViewDelegate {
         
     }
     
-       
+    //MARK :获取用户信息
+    private func loadUserInfo(token: String,uid:String) {
+        
+      let urlString = "https://api.weibo.com/2/users/show.json"
+      let parameters = ["access_token":token,"uid":uid]
+        let AFN = AFHTTPSessionManager()
+        
+        AFN.GET(urlString, parameters: parameters, progress: { (p) -> Void in
+            
+            }, success: { (_, result) -> Void in
+                
+                print(result)
+                if let dict = result {
+                    if let dict = result {
+                        
+                        let avatar_large = dict["avatar_large"] as! String
+                        let name = dict["name"] as! String
+                       
+                        print(avatar_large,name)
+                                             
+                    }
+                    
+                    
+                    
+                    
+                    
+                }
+                
+            }) { (_, error) -> Void in
+                print(error)
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
     
     
     
