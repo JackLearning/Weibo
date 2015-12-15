@@ -55,7 +55,16 @@ class BaseTableViewController: UITableViewController,VisitorLoginViewDelegate{
     
     // 实现代理方法
     func userWillLogin() {
-         print(__FUNCTION__)
+        print(__FUNCTION__)
+        
+   let oauth = OAuthViewController()
+        // 添加到导航视图控制器上
+        let nav = UINavigationController(rootViewController: oauth)
+        presentViewController(nav, animated: true, completion: nil)
+        
+               
+        
+        
     }
     func userWillRegister() {
          print(__FUNCTION__)

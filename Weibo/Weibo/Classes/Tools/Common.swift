@@ -10,3 +10,6 @@ import UIKit
 
 //设置主题色 全局变量
 let themeColor = UIColor.orangeColor()
+//应用程序重要信息
+let client_id = "1334213178"
+let redirect_uri = "http://www.baidu.com"
