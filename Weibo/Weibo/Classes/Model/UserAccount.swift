@@ -36,6 +36,15 @@ class UserAccount: NSObject {
     }
     
     
+    // 
+    override var description:String {
+        
+        let keys = ["access_token","expires_in","uid","name","avatar_large"]
+        
+        return dictionaryWithValuesForKeys(keys).description
+        
+        
+    }
     
     
     
