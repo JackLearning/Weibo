@@ -70,8 +70,6 @@ class VisitorLoginView: UIView {
     }
     
     
-    
-    
     override init(frame: CGRect) {
         //调用super.init
         super.init(frame: frame)

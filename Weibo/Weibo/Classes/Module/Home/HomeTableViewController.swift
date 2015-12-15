@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AFNetworking
+import SVProgressHUD
 
 class HomeTableViewController: BaseTableViewController {
 
@@ -14,6 +16,41 @@ class HomeTableViewController: BaseTableViewController {
         super.viewDidLoad()
 
          visitorLoginView?.setupInfo("登录后，别人评论你的微博，发给你的消息，都会在这里收到通知", imageName: nil)
+        
+        test()
+        
+    }
+    
+   // 第三方框架的简单使用
+    
+    func test() {
+    // 实现网络请求
+    let AFN = AFHTTPSessionManager()
+    
+    // get请求
+    let urlString = "http://www.weather.com.cn/data/sk/101010100.html"
+    
+    AFN.responseSerializer.acceptableContentTypes?.insert("text/html")
+        
+    // 进度指示器
+        SVProgressHUD.show()
+        
+        AFN.GET(urlString, parameters: nil, progress: { (progress) -> Void in
+            
+            print(progress)
+            
+            }, success: { (task, result) -> Void in
+                 SVProgressHUD.dismiss()
+                print(result)
+            }) { (task,error) -> Void in
+                 print(error)
+        }
+        
+    
+    
+    
+        
+    
     }
 
     override func didReceiveMemoryWarning() {
