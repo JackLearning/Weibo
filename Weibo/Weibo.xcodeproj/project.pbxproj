@@ -16,7 +16,8 @@
 		1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDE01C1D875600175973 /* MaintabBar.swift */; };
 		1893DDE31C1D99FB00175973 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDE21C1D99FB00175973 /* BaseTableViewController.swift */; };
 		189BF26D1C1D1A8B00332249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BF26C1C1D1A8B00332249 /* AppDelegate.swift */; };
-		18F551E21C1FB9B800283E00 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F551E11C1FB9B800283E00 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		18EC6AAF1C217A6C00719669 /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC6AAE1C217A6C00719669 /* NewFeatureViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		18EC6AB21C217B0400719669 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC6AB11C217B0400719669 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		18F551E61C201EAF00283E00 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F551E51C201EAF00283E00 /* UserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		18F551E81C2039A800283E00 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F551E71C2039A800283E00 /* UserAccountViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		71467E801C1DCAFE009599F3 /* VisitorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71467E7F1C1DCAFE009599F3 /* VisitorLoginView.swift */; };
@@ -36,7 +37,8 @@
 		189BF2691C1D1A8B00332249 /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		189BF26C1C1D1A8B00332249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		189BF2781C1D1A8B00332249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18F551E11C1FB9B800283E00 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		18EC6AAE1C217A6C00719669 /* NewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewFeatureViewController.swift; path = Weibo/Classes/Module/NewFeature/NewFeatureViewController.swift; sourceTree = SOURCE_ROOT; };
+		18EC6AB11C217B0400719669 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		18F551E51C201EAF00283E00 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		18F551E71C2039A800283E00 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		4E3C8947415643AC53F521E3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,14 +74,16 @@
 		1893DDCB1C1D390F00175973 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				18F551E01C1FB99200283E00 /* OAuth */,
+				18EC6AB01C217B0400719669 /* OAuth */,
+				18EC6A541C2179BC00719669 /* NewFeature */,
 				1893DDCF1C1D390F00175973 /* Main */,
 				1893DDCE1C1D390F00175973 /* Home */,
 				1893DDD01C1D390F00175973 /* Message */,
 				1893DDCD1C1D390F00175973 /* Discover */,
 				1893DDD11C1D390F00175973 /* Profile */,
 			);
-			path = Module;
+			name = Module;
+			path = Module/NewFeature;
 			sourceTree = "<group>";
 		};
 		1893DDCC1C1D390F00175973 /* Tools */ = {
@@ -167,10 +171,18 @@
 			path = Weibo;
 			sourceTree = "<group>";
 		};
-		18F551E01C1FB99200283E00 /* OAuth */ = {
+		18EC6A541C2179BC00719669 /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
-				18F551E11C1FB9B800283E00 /* OAuthViewController.swift */,
+				18EC6AAE1C217A6C00719669 /* NewFeatureViewController.swift */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		18EC6AB01C217B0400719669 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				18EC6AB11C217B0400719669 /* OAuthViewController.swift */,
 			);
 			path = OAuth;
 			sourceTree = "<group>";
@@ -337,18 +349,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EC6AB21C217B0400719669 /* OAuthViewController.swift in Sources */,
 				18F551E81C2039A800283E00 /* UserAccountViewModel.swift in Sources */,
 				1893DDDD1C1D3E2900175973 /* ProfileTableViewController.swift in Sources */,
 				1893DDD91C1D3DE200175973 /* HomeTableViewController.swift in Sources */,
 				1893DDE31C1D99FB00175973 /* BaseTableViewController.swift in Sources */,
 				189BF26D1C1D1A8B00332249 /* AppDelegate.swift in Sources */,
 				1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */,
+				18EC6AAF1C217A6C00719669 /* NewFeatureViewController.swift in Sources */,
 				1893DDDB1C1D3E0C00175973 /* DiscoverTableViewController.swift in Sources */,
 				1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */,
 				71467E801C1DCAFE009599F3 /* VisitorLoginView.swift in Sources */,
 				18F551E61C201EAF00283E00 /* UserAccount.swift in Sources */,
 				71467E821C1DCBED009599F3 /* Common.swift in Sources */,
-				18F551E21C1FB9B800283E00 /* OAuthViewController.swift in Sources */,
 				1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

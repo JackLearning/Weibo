@@ -34,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 设置根控制器
         
-        window?.rootViewController = MainViewController()
+//        window?.rootViewController = MainViewController()
+        window?.rootViewController = NewFeatureViewController()
+
         
         return true
     }
