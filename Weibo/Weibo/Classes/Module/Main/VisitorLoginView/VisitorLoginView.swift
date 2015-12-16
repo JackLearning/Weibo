@@ -193,10 +193,6 @@ class VisitorLoginView: UIView {
     
     
     
-    
-    
-    
-    
     //懒加载所有的子视图
    // 背景遮罩
     private lazy var backView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
@@ -211,6 +207,7 @@ class VisitorLoginView: UIView {
         l.textColor = UIColor.darkGrayColor()
         l.textAlignment = .Center
         l.font = UIFont.systemFontOfSize(14)
+        l.numberOfLines = 0
         l.sizeToFit()
         
         return l
@@ -238,7 +235,6 @@ class VisitorLoginView: UIView {
     }()
     
   
-    
     
 
 }

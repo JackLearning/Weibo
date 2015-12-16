@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 程序一启动就调这个方法
+        let account = UserAccount.loadAccount()
+        
+        print(account)
+        
         window = UIWindow(frame: UIScreen .mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         window?.makeKeyAndVisible()

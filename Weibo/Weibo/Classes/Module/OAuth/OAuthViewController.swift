@@ -142,79 +142,57 @@ extension OAuthViewController:UIWebViewDelegate {
  // MARK: 加载用户token(请求标识)
     private func loadAccessToken(code: String) {
         
-        let urlString = "https://api.weibo.com/oauth2/access_token"
-        let parameters = ["client_id":client_id,"client_secret":client_secret,"grant_type":"authorization_code","code":code,"redirect_uri":redirect_uri]
-        
-        let AFN = AFHTTPSessionManager()
-        
-        AFN.responseSerializer.acceptableContentTypes?.insert("text/plain")
-        AFN.POST(urlString, parameters: parameters, progress: { (p) -> Void in
-            print(p)
-            }, success: { (_, result) -> Void in
-                print(result)
-               // 获取token成功
-                // 根据token 就可以拿到用户的信息
-                if let dict = result {
-                    // 强转,强行作为字符串使用
-                    let token = dict["access_token"] as! String
-                    let uid = dict["uid"] as! String
-                    self.loadUserInfo(token,uid:uid)
-                    
-                    // 字典转模型
-                    let userAccount = UserAccount(dict: dict as! [String : AnyObject])
-                    print("=========")
-                    print(userAccount)
-                    print("==========")
-                    
-                }
+        UserAccountViewModel().loadAccessToken(code) { (isSuccess) -> () in
+            if isSuccess {
+                print("登录成功")
+                self.close()
                 
+            }else {
                 
-            }) { (__, error) -> Void in
-                print(error)
+                print("登录失败")
+            }
         }
-        
-    
         
     }
     
-    //MARK :获取用户信息
-    private func loadUserInfo(token: String,uid:String) {
-        
-      let urlString = "https://api.weibo.com/2/users/show.json"
-      let parameters = ["access_token":token,"uid":uid]
-        let AFN = AFHTTPSessionManager()
-        
-        AFN.GET(urlString, parameters: parameters, progress: { (p) -> Void in
-            
-            }, success: { (_, result) -> Void in
-                
-                print(result)
-                if let dict = result {
-                    if let dict = result {
-                        
-                        let avatar_large = dict["avatar_large"] as! String
-                        let name = dict["name"] as! String
-                       
-                        print(avatar_large,name)
-                        
-                    }
-                    
-                    
-                    
-                    
-                    
-                }
-                
-            }) { (_, error) -> Void in
-                print(error)
-        }
-        
-        
-        
-        
-        
-    }
-    
+//    //MARK :获取用户信息
+//    private func loadUserInfo(token: String,uid:String) {
+//        
+//      let urlString = "https://api.weibo.com/2/users/show.json"
+//      let parameters = ["access_token":token,"uid":uid]
+//        let AFN = AFHTTPSessionManager()
+//        
+//        AFN.GET(urlString, parameters: parameters, progress: { (p) -> Void in
+//            
+//            }, success: { (_, result) -> Void in
+//                
+//                print(result)
+//                if let dict = result {
+//                    if let dict = result {
+//                        
+//                        let avatar_large = dict["avatar_large"] as! String
+//                        let name = dict["name"] as! String
+//                       
+//                        print(avatar_large,name)
+//                        
+//                    }
+//                    
+//                    
+//                  print(dict)
+//                    
+//                    
+//                }
+//                
+//            }) { (_, error) -> Void in
+//                print(error)
+//        }
+//        
+//        
+//        
+//        
+//        
+//    }
+//    
     
     
     

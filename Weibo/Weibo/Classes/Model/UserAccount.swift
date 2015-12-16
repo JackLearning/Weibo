@@ -69,7 +69,7 @@ class UserAccount: NSObject,NSCoding {
         
         //字符串拼接路径的方法 在 Xcode 7中 被搞丢了  需要转换为 NSString
         // String <-> NSString  [Key: Value] <-> NSDictnory  [xxx,xxx] <-> NSArray  在类型转换的时候 不需要考虑  ? 还是 !
-        let path =  (NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.plist")
+        let path =  (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.plist")
         print(path)
         
         // 保存自定义对象
