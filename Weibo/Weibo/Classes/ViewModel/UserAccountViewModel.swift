@@ -24,6 +24,15 @@ class UserAccountViewModel: NSObject {
       return userAccount?.access_token != nil
     }
     
+    
+    // 用户名
+    var userName:String? {
+        
+        return userAccount?.name
+    }
+    
+    
+    
  
     // MARK :加载用户的token(请求标识)
     func loadAccessToken(code:String,finished:(isSuccess:Bool)->()) {
