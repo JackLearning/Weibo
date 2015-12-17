@@ -7,7 +7,7 @@
 //
 
 import  UIKit
-
+import SnapKit
 
 class WelcomeViewController: UIViewController {
     
@@ -22,6 +22,60 @@ class WelcomeViewController: UIViewController {
          super.viewDidLoad()
         setupUI()
     }
+    
+ // 执行动画 根视图没有设置frame
+ // 一般在viewDidAppear方法中执行动画
+    override func viewDidAppear(animated: Bool)
+    {
+         super.viewDidAppear(animated)
+        print(view)
+        showAnimation()
+        
+    }
+    
+ // 执行动画：修改iconView的底部约束
+    
+    private func showAnimation() {
+        
+     // 设置label 的透明度为0
+     welcomeLabel.alpha = 0
+     // 弹簧系数 * 10 ~= 加速度  这个时候动画效果一般不会太奇葩
+        
+       // 修改底部约束
+        let offset = -UIScreen.mainScreen().bounds.height + 200
+        iconView.snp_updateConstraints { (make) -> Void in
+            
+            make.bottom.equalTo(view.snp_bottom).offset(offset)
+        }
+        
+        
+         UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.98, initialSpringVelocity: 9.8, options: [], animations: { () -> Void in
+            
+              self.view.layoutIfNeeded()
+            
+            }) { (_) -> Void in
+                
+                
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    
+                    self.welcomeLabel.alpha = 1
+                    
+                    }, completion: { (_) -> Void in
+                         print("OK")
+                })
+                
+                
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     
