@@ -24,6 +24,18 @@ class UserAccountViewModel: NSObject {
       return userAccount?.access_token != nil
     }
     
+    // 用户头像的url
+    var headURL:NSURL? {
+        
+        let url = NSURL(string: userAccount?.avatar_large ?? "")
+        
+        return url
+    }
+    
+    
+    
+    
+    
     
     // 用户名
     var userName:String? {

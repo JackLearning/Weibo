@@ -8,6 +8,8 @@
 
 import  UIKit
 import SnapKit
+import SDWebImage
+
 
 class WelcomeViewController: UIViewController {
     
@@ -98,9 +100,19 @@ class WelcomeViewController: UIViewController {
         
         }
      
+        // 设置iconView对应的图片
         
+        iconView.sd_setImageWithURL(UserAccountViewModel().headURL, placeholderImage: UIImage(named: "avatar_default_big"))
+        
+        // 设置圆角图片
+        iconView.layer.cornerRadius = 45
+        // 裁剪
+        iconView.layer.masksToBounds = true
+        
+
         
     }
+    
     
     
     
