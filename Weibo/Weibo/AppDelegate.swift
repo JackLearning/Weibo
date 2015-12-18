@@ -40,11 +40,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置根控制器
         
 //        window?.rootViewController = MainViewController()
-        window?.rootViewController =  WelcomeViewController()
-
+        window?.rootViewController = defaultViewController()
         
         return true
+        
     }
+    
+    
+   // 根据用户的是否登录显示具体的页面
+    private func defaultViewController() ->UIViewController {
+        
+        // 根据用户是否登录
+        if UserAccountViewModel().userLogin {
+            
+            // 根据是否是新版本
+            return isNewVersion() ? NewFeatureViewController() :WelcomeViewController()
+            
+        }
+        
+        // 没登陆的情况
+        return MainViewController()
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // MARK :判断是否有新版本
     
     private func isNewVersion() ->Bool {
