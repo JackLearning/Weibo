@@ -25,14 +25,14 @@ class MainViewController: UITabBarController {
         
         // Do any additional setup after loading the view.
         
-        print(tabBar.classForCoder)
+//        print(tabBar.classForCoder)
         
         
         mainTabBar.composeBtn.addTarget(self, action: "composeBtnDidClick", forControlEvents:.TouchUpInside)
         
         setValue(mainTabBar, forKey: "tabBar")
         
-        print(tabBar.classForCoder)
+//        print(tabBar.classForCoder)
         
         // 添加子视图控制器
         

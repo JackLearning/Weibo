@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 程序一启动就调这个方法
         let account = UserAccount.loadAccount()
+          print("-------------")
+          print("\(account) 哈哈哈哈哈哈哈哈哈哈哈哈")
         
-        print(account)
         
         
-        
-        let result = isNewVersion()
-        print(result)
+//        let result = isNewVersion()
+//        print(result)
         
         window = UIWindow(frame: UIScreen .mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
@@ -38,8 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // 设置根控制器
-        
-//        window?.rootViewController = MainViewController()
         window?.rootViewController = defaultViewController()
         
         return true
@@ -50,54 +48,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    // 根据用户的是否登录显示具体的页面
     private func defaultViewController() ->UIViewController {
         
-        // 根据用户是否登录
-        if UserAccountViewModel().userLogin {
-            
-            // 根据是否是新版本
-            return isNewVersion() ? NewFeatureViewController() :WelcomeViewController()
-            
+        if isNewVersion() {
+            return NewFeatureViewController()
         }
-        
-        // 没登陆的情况
-        return MainViewController()
+        return WelcomeViewController()
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     // MARK :判断是否有新版本
     
-    private func isNewVersion() ->Bool {
+    private func isNewVersion() -> Bool {
        
         // 获取当前应用的版本号
         let info = NSBundle.mainBundle().infoDictionary
         
-        let currentStr = info!["CFBundleShortVersionString"]as! String
+        let currentStr = info!["CFBundleShortVersionString"] as! String
         
         let currentNum = Double(currentStr)
         
-        print(currentNum)
+      print(currentNum)
         // 获取本地缓存的版本号
         // 用偏好设置来缓存版本
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let sandBoxKey = "sandBoxKey"
         let lastNum = userDefaults.doubleForKey(sandBoxKey)
-        
+        print(lastNum)
         // 立即存储 当前的版本号
         userDefaults.setDouble(currentNum!, forKey: sandBoxKey)
         userDefaults.synchronize()
         
         // 比较当前版本号 和 老版本号
-        return currentNum > lastNum
+        return currentNum! > lastNum
         
         
         

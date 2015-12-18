@@ -44,7 +44,7 @@ class OAuthViewController: UIViewController {
     
     override func viewDidLoad() {
          super.viewDidLoad()
-        print(view.classForCoder)
+       //  print(view.classForCoder)
         loadOAuthPage()
         setNavBar()
     }
@@ -70,16 +70,11 @@ class OAuthViewController: UIViewController {
         
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "自动填充", style:.Plain, target: self, action: "defaultAccount")
-        
-        
-        
+              
     }
-    
-    
-    
-
+  
    }
-    
+
  // 扩展代码块
 extension OAuthViewController:UIWebViewDelegate {
     
@@ -119,7 +114,7 @@ extension OAuthViewController:UIWebViewDelegate {
         }
         
        // 程序走到这里,我们已经屏蔽了我们不需要的回调
-        print(urlString)
+        // print(urlString)
         
         // 解析字符串的code码
         // query 获取url 中参数部分
@@ -146,8 +141,7 @@ extension OAuthViewController:UIWebViewDelegate {
             if isSuccess {
                 print("登录成功")
                 self.close()
-                
-            }else {
+          }else {
                 
                 print("登录失败")
             }

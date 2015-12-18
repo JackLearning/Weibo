@@ -53,7 +53,7 @@ class UserAccount: NSObject,NSCoding {
     // 重写打印对象的方法
     override var description:String {
         
-        let keys = ["access_token","expires_in","uid","name","avatar_large"]
+        let keys = ["access_token","expires_in","uid","name","avatar_large","expires_date"]
         
         return dictionaryWithValuesForKeys(keys).description
         
@@ -70,7 +70,7 @@ class UserAccount: NSObject,NSCoding {
         //字符串拼接路径的方法 在 Xcode 7中 被搞丢了  需要转换为 NSString
         // String <-> NSString  [Key: Value] <-> NSDictnory  [xxx,xxx] <-> NSArray  在类型转换的时候 不需要考虑  ? 还是 !
         let path =  (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.plist")
-        print(path)
+       // print(path)
         
         // 保存自定义对象
         NSKeyedArchiver.archiveRootObject(self, toFile: path)
@@ -87,7 +87,7 @@ class UserAccount: NSObject,NSCoding {
         let path =  (NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.plist")
         
         
-        if let account = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as?UserAccount {
+    if let account = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as?UserAccount {
             
             //  token的有效期要做判断 如果过期 返回nil
             if account.expires_date?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
@@ -127,7 +127,7 @@ class UserAccount: NSObject,NSCoding {
   // 归档操作 将自定义对象 转成二进制,和序列化类似
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(access_token, forKey: "access_token")
-        aCoder.encodeObject(expires_in, forKey: "expires_in")
+        aCoder.encodeDouble(expires_in, forKey: "expires_in")
         aCoder.encodeObject(uid, forKey: "uid")
         aCoder.encodeObject(avatar_large, forKey: "avatar_large")
         aCoder.encodeObject(name, forKey: "name")

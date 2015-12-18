@@ -12,7 +12,7 @@ import UIKit
 class BaseTableViewController: UITableViewController,VisitorLoginViewDelegate{
 
    // 设置用户是否登录的标记
-    var userLogin = false
+    var userLogin = UserAccountViewModel().userLogin
     
     // 新建访客视图的属性
     var visitorLoginView:VisitorLoginView?
@@ -74,7 +74,7 @@ class BaseTableViewController: UITableViewController,VisitorLoginViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(view.bounds)
+        //print(view.bounds)
         
     }
 
@@ -82,7 +82,7 @@ class BaseTableViewController: UITableViewController,VisitorLoginViewDelegate{
     override func viewWillLayoutSubviews() {
          super.viewWillLayoutSubviews()
         
-        print(view.bounds)
+        //print(view.bounds)
     }
     
     

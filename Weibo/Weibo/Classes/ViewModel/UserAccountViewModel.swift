@@ -25,15 +25,12 @@ class UserAccountViewModel: NSObject {
     }
     
     // 用户头像的url
-    var headURL:NSURL? {
+    var headURL: NSURL? {
         
         let url = NSURL(string: userAccount?.avatar_large ?? "")
         
         return url
     }
-    
-    
-    
     
     
     
@@ -55,7 +52,7 @@ class UserAccountViewModel: NSObject {
         let AFN = AFHTTPSessionManager()
         AFN.responseSerializer.acceptableContentTypes?.insert("text/plain")
         AFN.POST(urlString, parameters: parameters, progress: { (p) -> Void in
-            print(p)
+           // print(p)
             }, success: { (_, result) -> Void in
                 
                 // 获取token 成功
@@ -63,6 +60,8 @@ class UserAccountViewModel: NSObject {
                 if let dict = result as?[String : AnyObject] {
                     
                     let userAccount = UserAccount(dict: dict)
+                    
+                    print(userAccount)
                     
                     self.loadUserInfo(userAccount,finished:finished)
                     
@@ -79,81 +78,39 @@ class UserAccountViewModel: NSObject {
     
     
 // MARK: 获取用户信息
-    private func loadUserInfo(account:UserAccount,finished:(isSuccess:Bool)->()) {
-        
-        
+
+    // MARK:获取用户信息
+    private func loadUserInfo(account: UserAccount,finished: (isSuccess: Bool) -> ()) {
         let urlString = "https://api.weibo.com/2/users/show.json"
-        
-        // 字典中不能放nil
+        // 制定中不能够存放nil [NSNull null]
         if let token = account.access_token,userId = account.uid {
             
-            
-            let parameters = ["access_token":token,"uid":userId]
-            
-            let AFN  = AFHTTPSessionManager()
-            
+            let parameters = ["access_token": token, "uid": userId]
+            let AFN = AFHTTPSessionManager()
             AFN.GET(urlString, parameters: parameters, progress: { (_) -> Void in
                 
                 }, success: { (_, result) -> Void in
-                    
-                    
-                    if let dict  = result {
-                      // 获取用户信息
+                    if let dict = result {
+                        //获取用户信息
                         let avatar_large = dict["avatar_large"] as! String
                         let name = dict["name"] as! String
-                        
-                        // 给account 对象的属性赋值
+                        //给account 对象的属性做赋值操作
                         account.name = name
                         account.avatar_large = avatar_large
-                        
-                        // 获取用户信息的完整自定义对象
-                        // 存储自定义对象
+                        //获取用户信息的完整自定义对象
+                        //存储自定义对象
                         account.saveAccount()
-                        // 执行成功的回调
+                        //执行成功的回调
                         finished(isSuccess: true)
-                        
                     }
-                    
-                    
-                }, failure: { (_, error) -> Void in
-                     print(error)
-                    
+                }) { (_, error) -> Void in
+                    print(error)
                     finished(isSuccess: false)
-                    
-                    
-            })
-            
-            
-            
+            }
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }
+
+ 
+     

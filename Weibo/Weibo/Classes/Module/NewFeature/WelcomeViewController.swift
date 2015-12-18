@@ -74,13 +74,6 @@ class WelcomeViewController: UIViewController {
     
     
     
-    
-    
-    
-    
-    
-    
-    
     private func setupUI() {
        
         view.addSubview(iconView)
@@ -112,11 +105,7 @@ class WelcomeViewController: UIViewController {
 
         
     }
-    
-    
-    
-    
-    
+       
  // MARK 懒加载所有的子视图
     private lazy var backImageView:UIImageView = UIImageView(image: UIImage(named: "ad_background"))
     
