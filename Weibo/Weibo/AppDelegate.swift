@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(account)
         
+        
+        
+        let result = isNewVersion()
+        print(result)
+        
         window = UIWindow(frame: UIScreen .mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         window?.makeKeyAndVisible()
@@ -40,7 +45,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    // MARK :判断是否有新版本
+    
+    private func isNewVersion() ->Bool {
+       
+        // 获取当前应用的版本号
+        let info = NSBundle.mainBundle().infoDictionary
+        
+        let currentStr = info!["CFBundleShortVersionString"]as! String
+        
+        let currentNum = Double(currentStr)
+        
+        print(currentNum)
+        // 获取本地缓存的版本号
+        // 用偏好设置来缓存版本
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let sandBoxKey = "sandBoxKey"
+        let lastNum = userDefaults.doubleForKey(sandBoxKey)
+        
+        // 立即存储 当前的版本号
+        userDefaults.setDouble(currentNum!, forKey: sandBoxKey)
+        userDefaults.synchronize()
+        
+        // 比较当前版本号 和 老版本号
+        return currentNum > lastNum
+        
+        
+        
+    }
+    
+    
     
     private func setThemeColor() {
         
