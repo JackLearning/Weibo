@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置主题颜色
         setThemeColor()
         
+        // 注册通知
+        registerNotification()
+        
         
         // 设置根控制器
         window?.rootViewController = defaultViewController()
@@ -43,6 +46,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
         
     }
+    
+    // 注册通知
+    private func registerNotification() {
+        
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchRootVC", name: WBswitchRootVC, object: nil)
+        
+        
+    }
+    
+    // 移除通知
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    //只要是OC中 target - action 这种消息机制 seletor类型都需要使用 @objc 来兼容
+    //1.按钮的点击事件
+    //2.通知的响应事件
+    //3.代理的可选协议方法
+    
+   @objc private func switchRootVC(n:NSNotification) {
+        
+        print(n)
+     // 根据通知去切换对应的根视图控制器
+        if n.object != nil {
+            // 跳转到welcome
+            window?.rootViewController = WelcomeViewController()
+            
+            return
+            
+        }
+        
+        // 跳到首页
+        
+      window?.rootViewController = MainViewController()
+    }
+    
+    
+    
     
     
    // 根据用户的是否登录显示具体的页面

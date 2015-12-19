@@ -84,7 +84,7 @@ class UserAccount: NSObject,NSCoding {
     class func loadAccount() ->UserAccount? {
         
         // 从磁盘解读数据
-        let path =  (NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.plist")
+        let path =  (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.plist")
         
         
     if let account = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as?UserAccount {
