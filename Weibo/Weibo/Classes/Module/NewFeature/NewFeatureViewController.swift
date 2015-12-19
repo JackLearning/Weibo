@@ -156,6 +156,9 @@ class NewFeatureCell: UICollectionViewCell {
     @objc private func  startBtnClick () {
     
     print(__FUNCTION__)
+        
+    // 动画结束时,发出切换页面的通知
+       NSNotificationCenter.defaultCenter().postNotificationName(change, object: nil)
     
     
     }

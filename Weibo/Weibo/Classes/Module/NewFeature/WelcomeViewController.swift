@@ -64,6 +64,12 @@ class WelcomeViewController: UIViewController {
                     
                     }, completion: { (_) -> Void in
                          print("OK")
+                        
+                        // 动画结束时,发出切换页面的通知
+                        NSNotificationCenter.defaultCenter().postNotificationName(change, object: nil)
+                        
+                        
+                        
                 })
                 
                 
@@ -83,6 +89,7 @@ class WelcomeViewController: UIViewController {
         iconView.snp_makeConstraints { (make) -> Void in
              make.centerX.equalTo(view.snp_centerX)
              make.bottom.equalTo(view.snp_bottom).offset(-200)
+             make.size.equalTo(CGSizeMake(90, 90))
             
         }
         
@@ -131,13 +138,4 @@ class WelcomeViewController: UIViewController {
     
 }
 
-
-
-
-
-
-
-
-
-
-
+ 

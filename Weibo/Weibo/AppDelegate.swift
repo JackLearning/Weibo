@@ -36,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置主题颜色
         setThemeColor()
         
+        // 注册通知
+        registerNotification()
+        
+        
         
         // 设置根控制器
         window?.rootViewController = defaultViewController()
@@ -44,9 +48,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    // 注册通知
+    private func registerNotification() {
+       
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"SwitchRootVC:", name: change, object: nil)
+        
+    }
+    
+    // 移除通知
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // 通知的响应方法
+   @objc private func SwitchRootVC(n:NSNotification) {
+        
+        print(n)
+    // 根据通知去切换对应的根视图控制器
+        if n.object != nil {
+            // 跳转到welcome
+            window?.rootViewController = WelcomeViewController()
+            
+            return
+            
+        }
+        
+       // 首页
+        window?.rootViewController = MainViewController()
+        
+    }
+    
     
    // 根据用户的是否登录显示具体的页面
-    private func defaultViewController() ->UIViewController {
+      private func defaultViewController() ->UIViewController {
         
         if isNewVersion() {
             return NewFeatureViewController()
