@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
    // 根据用户的是否登录显示具体的页面
-    private func defaultViewController() ->UIViewController {
+      private func defaultViewController() ->UIViewController {
         
         if isNewVersion() {
             return NewFeatureViewController()
