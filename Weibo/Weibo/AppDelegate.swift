@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 注册通知
     private func registerNotification() {
         
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchRootVC", name: WBswitchRootVC, object: nil)
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchRootVC:", name: WBswitchRootVC, object: nil)
         
         
     }
