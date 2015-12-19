@@ -121,21 +121,6 @@ class WelcomeViewController: UIViewController {
     
     // 可选项不能直接进行计算
     
-    private lazy var welcomeLabel:UILabel = {
-        
-        let l = UILabel()
-        
-        l.text = UserAccountViewModel().userName ?? "" + "欢迎归来"
-        l.font = UIFont.systemFontOfSize(16)
-        l.textColor = UIColor.lightGrayColor()
-        
-        l.sizeToFit()
-        
-        
-        return l
-        
-    }()
-    
-}
+    private lazy var welcomeLabel:UILabel = UILabel(title:UserAccountViewModel().userName ?? "", color: UIColor.lightGrayColor(), fontSize: 16)
 
- 
+}

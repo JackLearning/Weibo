@@ -17,38 +17,51 @@ class HomeTableViewController: BaseTableViewController {
 
          visitorLoginView?.setupInfo("登录后，别人评论你的微博，发给你的消息，都会在这里收到通知", imageName: nil)
         
-       // test()
+       
         
     }
     
    // 第三方框架的简单使用
     
-    func test() {
+   private func  loadData() {
     // 实现网络请求
     let AFN = AFHTTPSessionManager()
     
     // get请求
-    let urlString = "http://www.weather.com.cn/data/sk/101010100.html"
+    let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
     
-    AFN.responseSerializer.acceptableContentTypes?.insert("text/html")
+    // 判断token是否为空
+    guard let token = UserAccountViewModel().token else {
         
-    // 进度指示器
-        SVProgressHUD.show()
+        print("token为空")
+        SVProgressHUD.showInfoWithStatus("请重新登录")
+        return
+      
         
-        AFN.GET(urlString, parameters: nil, progress: { (progress) -> Void in
+    }
+        
+    let parameters = ["access_token" : token]
+    
+    AFN.GET(urlString, parameters: parameters, progress: { (p) -> Void in
+        print(p)
+        }, success: { (task, result) -> Void in
             
-            print(progress)
+            // 判断result能否转字典
+            if let dict = result as? [String:AnyObject] {
+                
+                if let array  = dict["statuses"] as? [[String:AnyObject]] {
+                    print(array)
+                    //TODO: 字典转模型
+                    
+                }
+                
+                
+            }
+           
             
-            }, success: { (task, result) -> Void in
-                 SVProgressHUD.dismiss()
-                print(result)
-            }) { (task,error) -> Void in
-                 print(error)
-        }
-        
-    
-    
-    
+        }) { (task, error) -> Void in
+             print(error)
+    }
         
     
     }

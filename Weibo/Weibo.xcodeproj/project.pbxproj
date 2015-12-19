@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188686031C257A9700674E8B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188686021C257A9700674E8B /* UILabel+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		188686051C257D8D00674E8B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188686041C257D8D00674E8B /* UIButton+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD41C1D3D7200175973 /* MainViewController.swift */; };
 		1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD61C1D3DAF00175973 /* MessageTableViewController.swift */; };
 		1893DDD91C1D3DE200175973 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD81C1D3DE200175973 /* HomeTableViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		188686021C257A9700674E8B /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		188686041C257D8D00674E8B /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		1893DDD41C1D3D7200175973 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Weibo/Classes/Module/Main/MainViewController.swift; sourceTree = SOURCE_ROOT; };
 		1893DDD61C1D3DAF00175973 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewController.swift; path = Weibo/Classes/Module/Message/MessageTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1893DDD81C1D3DE200175973 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewController.swift; path = Weibo/Classes/Module/Home/HomeTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		188686011C257A5700674E8B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				188686021C257A9700674E8B /* UILabel+Extension.swift */,
+				188686041C257D8D00674E8B /* UIButton+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1893DDCA1C1D390F00175973 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +104,7 @@
 		1893DDCC1C1D390F00175973 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				188686011C257A5700674E8B /* Extension */,
 				71467E811C1DCBED009599F3 /* Common.swift */,
 			);
 			path = Tools;
@@ -355,11 +369,13 @@
 				71A99ECC1C22D55900918AB2 /* OAuthViewController.swift in Sources */,
 				18F551E81C2039A800283E00 /* UserAccountViewModel.swift in Sources */,
 				1893DDDD1C1D3E2900175973 /* ProfileTableViewController.swift in Sources */,
+				188686051C257D8D00674E8B /* UIButton+Extension.swift in Sources */,
 				1893DDD91C1D3DE200175973 /* HomeTableViewController.swift in Sources */,
 				1893DDE31C1D99FB00175973 /* BaseTableViewController.swift in Sources */,
 				189BF26D1C1D1A8B00332249 /* AppDelegate.swift in Sources */,
 				713099951C23213600A18321 /* WelcomeViewController.swift in Sources */,
 				1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */,
+				188686031C257A9700674E8B /* UILabel+Extension.swift in Sources */,
 				18EC6AAF1C217A6C00719669 /* NewFeatureViewController.swift in Sources */,
 				1893DDDB1C1D3E0C00175973 /* DiscoverTableViewController.swift in Sources */,
 				1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */,

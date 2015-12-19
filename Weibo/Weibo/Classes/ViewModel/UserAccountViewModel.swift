@@ -40,7 +40,9 @@ class UserAccountViewModel: NSObject {
         return userAccount?.name
     }
     
-    
+    var token: String? {
+        return userAccount?.access_token
+    }
     
  
     // MARK :加载用户的token(请求标识)
