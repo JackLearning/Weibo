@@ -20,8 +20,7 @@ class Status: NSObject {
     var source:String?
     
    // 构造方法 KVC设置值
-    init(dict:[String:AnyObject]) {
-        
+    init(dict: [String : AnyObject]) { 
         super.init()
         setValuesForKeysWithDictionary(dict)
     }
@@ -30,9 +29,5 @@ class Status: NSObject {
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
         
     }
-    
-    
-    
-    
     
 }
