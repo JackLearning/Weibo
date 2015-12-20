@@ -31,9 +31,10 @@ class StatusCell: UITableViewCell {
         
         topView.snp_makeConstraints { (make) -> Void in
             
+        // 设置高度
+           //  make.height.equalTo(50)
             make.top.left.right.equalTo(contentView)
-            // 设置高度
-            make.height.equalTo(50)
+            
             
         }
    }

@@ -13,7 +13,7 @@ class StatusCellTopView: UIView {
     override init(frame: CGRect) {
          super.init(frame: frame)
         // 设置背景颜色 调试用
-        backgroundColor = UIColor(white: 0.9, alpha: 0.1)
+        backgroundColor = UIColor(white: 0.9, alpha: 1)
         
         setupUI()
         
@@ -85,10 +85,13 @@ class StatusCellTopView: UIView {
          make.top.equalTo(iconImage.snp_bottom).offset(StatusCellMarigin)
          make.left.equalTo(self.snp_left).offset(StatusCellMarigin)
         
+   }
         
+     // 对顶部视图的底部进行约束
+        self.snp_makeConstraints { (make) -> Void in
+            
+            make.bottom.equalTo(contentLabel.snp_bottom).offset(StatusCellMarigin)
         }
-        
-        
         
         
     }
@@ -108,16 +111,4 @@ class StatusCellTopView: UIView {
     private lazy var contentLabel: UILabel = UILabel(title: "咸鱼翻身啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊鹅鹅鹅鹅鹅鹅饿鹅鹅鹅", color: UIColor.darkGrayColor(), fontSize: 14, margin:StatusCellMarigin )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
