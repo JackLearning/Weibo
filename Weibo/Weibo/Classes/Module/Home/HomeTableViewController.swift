@@ -10,11 +10,9 @@ import UIKit
 import AFNetworking
 import SVProgressHUD
 
-
 private let HomeCellID = "HomeCellID"
 
-
-class HomeTableViewController: BaseTableViewController {
+ class HomeTableViewController: BaseTableViewController {
     
     private  lazy var statuses = [Status]()
     
@@ -43,8 +41,7 @@ class HomeTableViewController: BaseTableViewController {
         
     }
     
-    
-    
+        
     // 第三方框架的简单使用
     
     private func  loadData() {
@@ -100,8 +97,9 @@ class HomeTableViewController: BaseTableViewController {
       }
   }
 
-//MARK: tableView 数据源的协议方法
+////MARK: tableView 数据源的协议方法
 extension HomeTableViewController {
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statuses.count
     }
@@ -110,7 +108,8 @@ extension HomeTableViewController {
         //iOS 6.0 推出的方法  一定可以获取一个cell对象
         let cell = tableView.dequeueReusableCellWithIdentifier(HomeCellID, forIndexPath: indexPath)
         
-        cell.textLabel?.text = statuses[indexPath.row].text
+        cell.textLabel?.text = statuses[indexPath.row].user?.name
         return cell
     }
-}
+    
+  }
