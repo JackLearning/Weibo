@@ -19,3 +19,7 @@ let client_secret = "cfb262efe37fe6d91b025c9d9f6719cb"
 
 let WBswitchRootVC = "WBswitchRootVC"
 
+// 微博首页的基本布局信息
+//微博首页的基本布局信息
+let StatusCellMarigin: CGFloat = 12
+let StatusCellHeadImageWidth: CGFloat = 35

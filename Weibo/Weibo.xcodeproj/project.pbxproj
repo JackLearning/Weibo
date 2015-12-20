@@ -24,6 +24,8 @@
 		713099951C23213600A18321 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713099941C23213600A18321 /* WelcomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		71467E801C1DCAFE009599F3 /* VisitorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71467E7F1C1DCAFE009599F3 /* VisitorLoginView.swift */; };
 		71467E821C1DCBED009599F3 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71467E811C1DCBED009599F3 /* Common.swift */; };
+		715D8D161C26BE74001EA221 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D8D151C26BE74001EA221 /* StatusCell.swift */; settings = {ASSET_TAGS = (); }; };
+		715D8D181C26C42B001EA221 /* StatusCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D8D171C26C42B001EA221 /* StatusCellTopView.swift */; settings = {ASSET_TAGS = (); }; };
 		7184756B1C270FCB00162844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7184756A1C270FCB00162844 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		719670931C2596B4003088C2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719670921C2596B4003088C2 /* Status.swift */; settings = {ASSET_TAGS = (); }; };
 		71A99ECC1C22D55900918AB2 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A99ECB1C22D55900918AB2 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -51,6 +53,8 @@
 		713099941C23213600A18321 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Weibo/Classes/Module/NewFeature/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		71467E7F1C1DCAFE009599F3 /* VisitorLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoginView.swift; sourceTree = "<group>"; };
 		71467E811C1DCBED009599F3 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		715D8D151C26BE74001EA221 /* StatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		715D8D171C26C42B001EA221 /* StatusCellTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCellTopView.swift; sourceTree = "<group>"; };
 		7184756A1C270FCB00162844 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		719670921C2596B4003088C2 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		71A99ECB1C22D55900918AB2 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 		1893DDCE1C1D390F00175973 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				715D8D141C26BB6F001EA221 /* StatusCell */,
 				1893DDD81C1D3DE200175973 /* HomeTableViewController.swift */,
 			);
 			name = Home;
@@ -234,6 +239,16 @@
 			);
 			name = VisitorLoginView;
 			path = Weibo/Classes/Module/Main/VisitorLoginView;
+			sourceTree = SOURCE_ROOT;
+		};
+		715D8D141C26BB6F001EA221 /* StatusCell */ = {
+			isa = PBXGroup;
+			children = (
+				715D8D151C26BE74001EA221 /* StatusCell.swift */,
+				715D8D171C26C42B001EA221 /* StatusCellTopView.swift */,
+			);
+			name = StatusCell;
+			path = Weibo/Classes/Module/Home/StatusCell;
 			sourceTree = SOURCE_ROOT;
 		};
 		71A99ECA1C22D55900918AB2 /* OAuth */ = {
@@ -386,7 +401,9 @@
 				18EC6AAF1C217A6C00719669 /* NewFeatureViewController.swift in Sources */,
 				1893DDDB1C1D3E0C00175973 /* DiscoverTableViewController.swift in Sources */,
 				1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */,
+				715D8D181C26C42B001EA221 /* StatusCellTopView.swift in Sources */,
 				71467E801C1DCAFE009599F3 /* VisitorLoginView.swift in Sources */,
+				715D8D161C26BE74001EA221 /* StatusCell.swift in Sources */,
 				18F551E61C201EAF00283E00 /* UserAccount.swift in Sources */,
 				71467E821C1DCBED009599F3 /* Common.swift in Sources */,
 				1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */,

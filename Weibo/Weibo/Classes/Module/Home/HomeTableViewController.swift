@@ -37,7 +37,10 @@ private let HomeCellID = "HomeCellID"
     private func prepareTableView() {
         
         // 注册cell
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier:  HomeCellID)
+        tableView.registerClass(StatusCell.self, forCellReuseIdentifier:  HomeCellID)
+        
+        // 修改tableView的固定高度
+        tableView.rowHeight = 100
         
     }
     
@@ -106,9 +109,9 @@ extension HomeTableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //iOS 6.0 推出的方法  一定可以获取一个cell对象
-        let cell = tableView.dequeueReusableCellWithIdentifier(HomeCellID, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(HomeCellID, forIndexPath: indexPath) as! StatusCell
         
-        cell.textLabel?.text = statuses[indexPath.row].user?.name
+        // cell.textLabel?.text = statuses[indexPath.row].user?.name
         return cell
     }
     
