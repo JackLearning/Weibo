@@ -7,8 +7,32 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class StatusCellTopView: UIView {
+    
+    // 定义微博模型属性
+    var status: Status? {
+        didSet {
+    // 绑定数据
+     iconImage.sd_setImageWithURL(status?.user?.headURL)
+     nameLabel.text = status?.user?.name
+     mbrankImage.image = status?.user?.mbrankImage
+    verified_type_image.image = status?.user?.verified_type_image
+     //TODO: 后续完善
+     timeLabel.text = status?.created_at
+     sourceLabel.text = status?.source
+    contentLabel.text = status?.text
+            
+            
+        }
+        
+    }
+    
+    
+    
+    
 
     override init(frame: CGRect) {
          super.init(frame: frame)
@@ -111,4 +135,4 @@ class StatusCellTopView: UIView {
     private lazy var contentLabel: UILabel = UILabel(title: "咸鱼翻身啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊鹅鹅鹅鹅鹅鹅饿鹅鹅鹅", color: UIColor.darkGrayColor(), fontSize: 14, margin:StatusCellMarigin )
 }
 
- 
+

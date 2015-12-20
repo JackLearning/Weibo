@@ -112,6 +112,8 @@ extension HomeTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(HomeCellID, forIndexPath: indexPath) as! StatusCell
         
         // cell.textLabel?.text = statuses[indexPath.row].user?.name
+        
+        cell.status = statuses[indexPath.row]
         return cell
     }
     

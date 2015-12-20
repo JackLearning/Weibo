@@ -11,6 +11,14 @@ import SnapKit
 
 class StatusCell: UITableViewCell {
     
+    // 定义微博模型属性
+    var status:Status? {
+        didSet {
+       // 给顶部视图 设置模型数据
+            topView.status = status
+     }
+  }
+    
     // cell 入口
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
