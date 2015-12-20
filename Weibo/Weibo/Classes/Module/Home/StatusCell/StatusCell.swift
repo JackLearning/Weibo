@@ -34,6 +34,11 @@ class StatusCell: UITableViewCell {
     private func setupUI() {
      // 使用contentView 添加子视图
         contentView.addSubview(topView)
+        contentView.addSubview(bottomView)
+        
+        
+        
+        
         
      // 设置约束
         
@@ -45,6 +50,22 @@ class StatusCell: UITableViewCell {
             
             
         }
+        
+        
+        bottomView.snp_makeConstraints { (make) -> Void in
+            make.left.right.equalTo(self)
+            make.top.equalTo(topView.snp_bottom)
+            make.height.equalTo(40)
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         
        // 给contentView设置约束 非常的关键
         
@@ -64,6 +85,8 @@ class StatusCell: UITableViewCell {
 // 懒加载topView
     
     private lazy var topView:StatusCellTopView = StatusCellTopView()
+    
+    private lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
     
     
 }

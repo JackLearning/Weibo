@@ -20,12 +20,21 @@ extension UIButton {
     - parameter color:         文案的颜色
     */
    
-    convenience init(title:String,backImageName:String,fontSize:CGFloat,color:UIColor) {
+    convenience init(title:String,backImageName:String?,fontSize:CGFloat,color:UIColor, imageName: String? = nil ) {
     
         // 需要调用本类的指定的构造函数, 实例化自己
         self.init()
-        setBackgroundImage(UIImage(named:backImageName), forState: .Normal)
-        setTitle(title, forState: .Normal)
+        
+        if imageName != nil {
+            
+            setImage(UIImage(named: imageName!), forState: .Normal)
+            
+        }
+           if backImageName != nil {
+            
+            setBackgroundImage(UIImage(named: backImageName!), forState: .Normal)
+        }
+       setTitle(title, forState: .Normal)
         titleLabel?.font = UIFont.systemFontOfSize(fontSize)
         setTitleColor(color, forState: .Normal)
         sizeToFit()
