@@ -40,7 +40,18 @@ private let HomeCellID = "HomeCellID"
         tableView.registerClass(StatusCell.self, forCellReuseIdentifier:  HomeCellID)
         
         // 修改tableView的固定高度
-        tableView.rowHeight = 100
+//        tableView.rowHeight = 100
+        // 自动计算cell的行高
+        
+        
+        //1.设置预估行高  尽量的接近真实的行高 能够提高效率
+        //tabelView能够自动计算行高 关键条件之一 就是 contentView必须添加约束
+        // 1,给一个预估行高
+        // 2,自动计算行高 注意cell 中各个小部件的位置要约束好，cell上部，和下部
+        tableView.estimatedRowHeight = 300
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
         
     }
     

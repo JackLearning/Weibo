@@ -45,6 +45,20 @@ class StatusCell: UITableViewCell {
             
             
         }
+        
+       // 给contentView设置约束 非常的关键
+        
+      contentView.snp_makeConstraints { (make) -> Void in
+         make.top.left.right.equalTo(self)
+        make.bottom.equalTo(topView.snp_bottom)
+
+        }
+        
+        
+        
+        
+        
+        
    }
     
 // 懒加载topView
