@@ -24,16 +24,15 @@ class StatusCellTopView: UIView {
      timeLabel.text = status?.created_at
      sourceLabel.text = status?.source
     contentLabel.text = status?.text
+      
+            //设置配图视图的 图片的数组 数据源
+     pictureView.imageURLs = status?.imageURLs
             
             
         }
         
     }
-    
-    
-    
-    
-
+  
     override init(frame: CGRect) {
          super.init(frame: frame)
         // 设置背景颜色 调试用
