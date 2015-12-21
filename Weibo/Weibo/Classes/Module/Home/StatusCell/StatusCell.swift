@@ -74,12 +74,7 @@ class StatusCell: UITableViewCell {
         make.bottom.equalTo(topView.snp_bottom)
 
         }
-        
-        
-        
-        
-        
-        
+          
    }
     
 // 懒加载topView
