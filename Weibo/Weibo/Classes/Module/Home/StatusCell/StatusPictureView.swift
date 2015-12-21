@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let pictureCellID = "pictureCellID"
+
 private let pictureCellMargin:CGFloat = 5
 
 class StatusPictureView: UICollectionView {
@@ -25,6 +27,10 @@ class StatusPictureView: UICollectionView {
             
             //修改测试的文案
             testLabel.text = "\(imageURLs?.count ?? 0)"
+            
+            // 刷新列表
+            reloadData()
+            
         }
     }
     
@@ -36,8 +42,19 @@ class StatusPictureView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         //实例化一个 流水布局
         let flowLayout = UICollectionViewFlowLayout()
+        // 设置间距
+        flowLayout.minimumInteritemSpacing = pictureCellMargin
+        flowLayout.minimumLineSpacing = pictureCellMargin
+             
         super.init(frame: frame, collectionViewLayout: flowLayout)
         backgroundColor = UIColor.whiteColor()
+        
+        self.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier:pictureCellID)
+        
+        // 设置数据源
+        self.dataSource = self
+        
+        
         //设置视图
         setupUI()
     }
@@ -63,6 +80,13 @@ class StatusPictureView: UICollectionView {
         let itemWidth = (maxWidth - 2 * pictureCellMargin) / 3
         
         
+        // 1,取出collectionView的流水布局
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        // 设置itemSize
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        
+        
         //没有图片
         if imageCount == 0 {
             return CGSizeZero
@@ -72,6 +96,8 @@ class StatusPictureView: UICollectionView {
             //TODO: 单图会按照图片等比例显示
             //先给定固定尺寸
             let imageSize = CGSize(width: 180, height: 120)
+            // 设置单张图片的 itemSize
+            layout.itemSize = imageSize
             return imageSize
         }
         
@@ -109,5 +135,19 @@ class StatusPictureView: UICollectionView {
 
    }
 
+// 数据源方法
+//MARK: 数据源方法
+extension StatusPictureView: UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageURLs?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        //使用这个方法 一定要注册cell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(pictureCellID, forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.randomColor()
+        return cell
+}
 
+}
  
