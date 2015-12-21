@@ -82,7 +82,7 @@ class StatusPictureView: UICollectionView {
         let layout  = self.collectionViewLayout as! UICollectionViewFlowLayout
      // 设置itemSize 
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-                 
+        
         // 没有图片
         if imageCount == 0 {
             
@@ -122,9 +122,7 @@ class StatusPictureView: UICollectionView {
   
     return CGSize(width: maxWidth, height:  row * itemWidth + (row - 1) * pictureCellMargin)
         
-        
-        
-    }
+ }
     
     
     //MARK:设置页面和布局
@@ -163,12 +161,5 @@ extension StatusPictureView:UICollectionViewDataSource {
     }
     
 }
-
-
-
-
-
-
-
-
+ 
 

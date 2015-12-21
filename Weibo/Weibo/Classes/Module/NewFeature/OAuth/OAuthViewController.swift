@@ -23,7 +23,7 @@ class OAuthViewController: UIViewController {
     
     @objc private func defaultAccount() {
         
-        let jsString = "document.getElementById('userId').value = 'leiggee@126.com',document.getElementById('passwd').value = 'oyonomg'"
+        let jsString = "document.getElementById('userId').value = 'zhuzongchao666666@163.com',document.getElementById('passwd').value = 'a999999999'"
         
         webView.stringByEvaluatingJavaScriptFromString(jsString)
         
@@ -52,7 +52,11 @@ class OAuthViewController: UIViewController {
     private func loadOAuthPage() {
         // 1,urlString
         
+//        let urlString = "https://api.weibo.com/oauth2/authorize?" + "client_id=" + client_id + "&redirect_uri=" + redirect_uri
+        
+        
         let urlString = "https://api.weibo.com/oauth2/authorize?" + "client_id=" + client_id + "&redirect_uri=" + redirect_uri
+        
         
         let url = NSURL(string: urlString)
         //程序员承诺有值
