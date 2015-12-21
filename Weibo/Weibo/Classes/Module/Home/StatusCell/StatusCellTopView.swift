@@ -8,9 +8,13 @@
 
 import UIKit
 import SDWebImage
-
+import SnapKit
 
 class StatusCellTopView: UIView {
+    
+    // 定义视图的底部约束属性
+    var bottomConstraints: Constraint?
+    
     
     // 定义微博模型属性
     var status: Status? {
@@ -28,6 +32,31 @@ class StatusCellTopView: UIView {
     //设置配图视图的 图片的数组 数据源
      pictureView.imageURLs = status?.imageURLs
             
+      
+            
+   // 在更新约束之前 将之前的约束先卸载掉 底部约束
+      self.bottomConstraints?.uninstall()
+  // 根据是否有配图 来动态调整约束关系
+            if let urls = status?.imageURLs where urls.count > 0 {
+                
+              //配图视图  在一个 {}内 对应的闭包 无法简写
+                
+              self.snp_updateConstraints(closure: { (make) -> Void in
+                
+    self.bottomConstraints = make.bottom.equalTo(pictureView.snp_bottom).offset(StatusCellMarigin).constraint
+             
+        })
+            } else {
+              // 没有配图
+                
+            self.snp_updateConstraints(closure: { (make) -> Void in
+                
+                self.bottomConstraints = make.bottom.equalTo(contentLabel.snp_bottom).offset(StatusCellMarigin).constraint
+                
+            })
+  }
+            
+             
             
         }
         
