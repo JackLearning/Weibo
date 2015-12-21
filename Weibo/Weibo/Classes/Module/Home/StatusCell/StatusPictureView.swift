@@ -49,7 +49,7 @@ class StatusPictureView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: flowLayout)
         backgroundColor = UIColor.whiteColor()
         
-        self.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier:pictureCellID)
+        self.registerClass(PictureCell.self, forCellWithReuseIdentifier:pictureCellID)
         
         // 设置数据源
         self.dataSource = self
@@ -144,10 +144,57 @@ extension StatusPictureView: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         //使用这个方法 一定要注册cell
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(pictureCellID, forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.randomColor()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(pictureCellID, forIndexPath: indexPath) as! PictureCell
+       //  cell.backgroundColor = UIColor.randomColor()
+        
+        cell.imageURL = imageURLs![indexPath.item]
+        
         return cell
 }
 
 }
+
+class PictureCell: UICollectionViewCell {
+    // MARK:定义外部模型属性
+    var imageURL: NSURL? {
+        didSet {
+            iconView.sd_setImageWithURL(imageURL)
+        }
+    }
+    // MARK:重写构造方法
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK:设置页面 和 布局
+    private func setupUI() {
+        contentView.addSubview(iconView)
+        
+        //设置布局
+        iconView.snp_makeConstraints { (make) -> Void in
+            make.edges.equalTo(snp_edges)
+        }
+    }
+    
+    
+    // MARK:懒加载所有的子视图
+    private lazy var iconView: UIImageView = {
+        let iv = UIImageView()
+        //ScaleAspectFill 显示图片的原比例 但是 图片会被裁减   一般采用这种方式
+        //ScaleToFill  图片默认的显示样式  但是 图片 会被压缩 或者拉伸 一般不推荐使用这种方式来显示
+        
+        iv.contentMode = UIViewContentMode.ScaleAspectFill
+        //在手码开发中 图片的默认的剪裁 是没有开启的  需要手动设置
+        iv.clipsToBounds = true
+        
+        return iv
+        }()
+ 
+}
+
  
