@@ -58,6 +58,7 @@ class StatusCellTopView: UIView {
         addSubview(timeLabel)
         addSubview(sourceLabel)
         addSubview(contentLabel)
+        addSubview(pictureView)
         
         
      // 设置约束
@@ -111,16 +112,24 @@ class StatusCellTopView: UIView {
         
    }
         
+        // 对配图视图的约束
+        pictureView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(contentLabel.snp_bottom).offset(StatusCellMarigin)
+            make.left.equalTo(contentLabel.snp_left)
+            make.size.equalTo(CGSize(width: 100, height: 100))
+ 
+        }
+        
+        
      // 对顶部视图的底部进行约束
         self.snp_makeConstraints { (make) -> Void in
             
-            make.bottom.equalTo(contentLabel.snp_bottom).offset(StatusCellMarigin)
+            make.bottom.equalTo(pictureView.snp_bottom).offset(StatusCellMarigin)
         }
         
         
     }
-        
-    
+         
   // 懒加载所有的子视图
     private lazy var iconImage:UIImageView = UIImageView(image: UIImage(named:"avatar_default_big"))
  
@@ -133,6 +142,14 @@ class StatusCellTopView: UIView {
     private lazy var timeLabel:UILabel = UILabel(title: "11.11", color: themeColor, fontSize: 10)
     private lazy var sourceLabel:UILabel = UILabel(title: "啊你", color: themeColor, fontSize: 10)
     private lazy var contentLabel: UILabel = UILabel(title: "咸鱼翻身啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊鹅鹅鹅鹅鹅鹅饿鹅鹅鹅", color: UIColor.darkGrayColor(), fontSize: 14, margin:StatusCellMarigin )
+    
+    // 配图视图
+    private lazy var pictureView: StatusPictureView = StatusPictureView()
+    
+    
+    
+    
+    
 }
 
 
