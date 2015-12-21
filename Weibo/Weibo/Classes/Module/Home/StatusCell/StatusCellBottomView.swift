@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class StatusCellBottomView: UIView {
    
@@ -29,7 +30,74 @@ class StatusCellBottomView: UIView {
         addSubview(commentBtn)
         addSubview(likeBtn)
         
+    // 设置约束
+        
+     retweetedBtn.snp_makeConstraints { (make) -> Void in
+         make.left.top.bottom.equalTo(self)
+
+        }
+      commentBtn.snp_makeConstraints { (make) -> Void in
+        make.left.equalTo(retweetedBtn.snp_right)
+        make.top.bottom.equalTo(self)
+        make.width.equalTo(retweetedBtn.snp_width)
+        
     }
+        
+    likeBtn.snp_makeConstraints { (make) -> Void in
+        make.left.equalTo(commentBtn.snp_right)
+      // 1,三等分视图的第一步 两边的视图首先要贴边对齐
+        make.right.equalTo(self.snp_right)
+      // 2,视图三等分第二部 所有视图宽度相等
+        make.width.equalTo(commentBtn.snp_width)
+        make.top.bottom.equalTo(self)
+        
+   }
+        
+        
+   let sepeView1 = sepeView()
+        
+   let sepeView2 = sepeView()
+        
+        let w:CGFloat = 0.5
+        let scale = 0.4
+     // 添加分割线
+        addSubview(sepeView1)
+        addSubview(sepeView2)
+            
+        
+// 设置分割线的约束
+  sepeView1.snp_makeConstraints { (make) -> Void in
+    
+   make.left.equalTo(retweetedBtn.snp_right)
+    make.height.equalTo(self.snp_height).multipliedBy(scale)
+    make.centerY.equalTo(self.snp_centerY)
+    make.width.equalTo(w)
+   
+    
+   }
+    
+        
+        sepeView2.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(commentBtn.snp_right)
+            make.height.equalTo(self.snp_height).multipliedBy(scale)
+            make.centerY.equalTo(self.snp_centerY)
+            make.width.equalTo(w)
+            
+            
+        }
+     }
+    
+ // 生成分割视图
+    private func sepeView() ->UIView {
+      
+      let v = UIView()
+    // 设置背景颜色
+     v.backgroundColor = UIColor.darkGrayColor()
+        
+      return v
+        
+  }
     
     
     

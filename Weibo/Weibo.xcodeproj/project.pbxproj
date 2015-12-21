@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		188686031C257A9700674E8B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188686021C257A9700674E8B /* UILabel+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		188686051C257D8D00674E8B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188686041C257D8D00674E8B /* UIButton+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		188961401C279B6B00F9B9CF /* StatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889613F1C279B6B00F9B9CF /* StatusPictureView.swift */; settings = {ASSET_TAGS = (); }; };
+		188961421C27A86300F9B9CF /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188961411C27A86300F9B9CF /* UIColor + Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		1893DDD51C1D3D7200175973 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD41C1D3D7200175973 /* MainViewController.swift */; };
 		1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD61C1D3DAF00175973 /* MessageTableViewController.swift */; };
 		1893DDD91C1D3DE200175973 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893DDD81C1D3DE200175973 /* HomeTableViewController.swift */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		188686021C257A9700674E8B /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		188686041C257D8D00674E8B /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		1889613F1C279B6B00F9B9CF /* StatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusPictureView.swift; sourceTree = "<group>"; };
+		188961411C27A86300F9B9CF /* UIColor + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		1893DDD41C1D3D7200175973 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Weibo/Classes/Module/Main/MainViewController.swift; sourceTree = SOURCE_ROOT; };
 		1893DDD61C1D3DAF00175973 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewController.swift; path = Weibo/Classes/Module/Message/MessageTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1893DDD81C1D3DE200175973 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewController.swift; path = Weibo/Classes/Module/Home/HomeTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -81,6 +85,7 @@
 			children = (
 				188686021C257A9700674E8B /* UILabel+Extension.swift */,
 				188686041C257D8D00674E8B /* UIButton+Extension.swift */,
+				188961411C27A86300F9B9CF /* UIColor + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				715D8D151C26BE74001EA221 /* StatusCell.swift */,
 				715D8D171C26C42B001EA221 /* StatusCellTopView.swift */,
 				71E7314F1C27224600AB1DAA /* StatusCellBottomView.swift */,
+				1889613F1C279B6B00F9B9CF /* StatusPictureView.swift */,
 			);
 			name = StatusCell;
 			path = Weibo/Classes/Module/Home/StatusCell;
@@ -399,6 +405,7 @@
 				1893DDE31C1D99FB00175973 /* BaseTableViewController.swift in Sources */,
 				71E731501C27224600AB1DAA /* StatusCellBottomView.swift in Sources */,
 				189BF26D1C1D1A8B00332249 /* AppDelegate.swift in Sources */,
+				188961421C27A86300F9B9CF /* UIColor + Extension.swift in Sources */,
 				713099951C23213600A18321 /* WelcomeViewController.swift in Sources */,
 				1893DDD71C1D3DAF00175973 /* MessageTableViewController.swift in Sources */,
 				188686031C257A9700674E8B /* UILabel+Extension.swift in Sources */,
@@ -410,6 +417,7 @@
 				715D8D161C26BE74001EA221 /* StatusCell.swift in Sources */,
 				18F551E61C201EAF00283E00 /* UserAccount.swift in Sources */,
 				71467E821C1DCBED009599F3 /* Common.swift in Sources */,
+				188961401C279B6B00F9B9CF /* StatusPictureView.swift in Sources */,
 				1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */,
 				7184756B1C270FCB00162844 /* User.swift in Sources */,
 			);
