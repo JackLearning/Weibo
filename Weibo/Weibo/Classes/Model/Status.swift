@@ -22,6 +22,36 @@ class Status: NSObject {
     // 用户模型
     var user: User?
     
+   // 配图数组
+    var pic_urls:[[String : String]]? {
+        didSet {
+            
+            guard let array = pic_urls else {
+                
+                return
+                
+            }
+      // 遍历数组
+      // 将数组实例化
+      imageURLs = [NSURL]()
+    for item in array {
+    // 相信后端能返回一个url的string
+        let urlString = item["thumbnail_pic"]
+        // 相信后端给的url 一定能转成url对象
+        let url = NSURL(string: urlString!)
+        
+       // 添加url
+        imageURLs!.append(url!)
+        
+       }
+      }
+     
+    }
+    
+   // 将配图的数组转换成 url 对象
+    var imageURLs:[NSURL]?
+    
+    
    // 构造方法 KVC设置值
     init(dict: [String : AnyObject]) { 
         super.init()

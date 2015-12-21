@@ -23,3 +23,13 @@ let WBswitchRootVC = "WBswitchRootVC"
 //微博首页的基本布局信息
 let StatusCellMarigin: CGFloat = 12
 let StatusCellHeadImageWidth: CGFloat = 35
+
+// 屏幕的尺寸信息
+
+let screenW:CGFloat = UIScreen.mainScreen().bounds.width
+let screenH:CGFloat = UIScreen.mainScreen().bounds.height
+
+
+
+
+
