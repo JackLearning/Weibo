@@ -54,13 +54,11 @@ class StatusCellTopView: UIView {
                 self.bottomConstraints = make.bottom.equalTo(contentLabel.snp_bottom).offset(StatusCellMarigin).constraint
                 
             })
-  }
-            
-             
-            
         }
+    
+      }
         
-    }
+  }
   
     override init(frame: CGRect) {
          super.init(frame: frame)

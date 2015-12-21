@@ -35,7 +35,7 @@ class StatusCell: UITableViewCell {
      // 使用contentView 添加子视图
         contentView.addSubview(topView)
         contentView.addSubview(bottomView)
-        
+        contentView.addSubview(retweetedView)
         
         
         
@@ -51,10 +51,19 @@ class StatusCell: UITableViewCell {
             
         }
         
+        // 设置转发微博的约束
+        retweetedView.snp_makeConstraints { (make) -> Void in
+             make.left.right.equalTo(contentView)
+             make.top.equalTo(topView.snp_bottom)
+             make.height.equalTo(50)
+            
+         }
+        
+        
         
         bottomView.snp_makeConstraints { (make) -> Void in
             make.left.right.equalTo(self)
-            make.top.equalTo(topView.snp_bottom)
+            make.top.equalTo(retweetedView.snp_bottom)
             make.height.equalTo(40)
             
         }
@@ -70,6 +79,10 @@ class StatusCell: UITableViewCell {
    }
     
 // 懒加载topView
+    
+    // 转发微博
+    private lazy var retweetedView:StatusRetweetedView = StatusRetweetedView()
+    
     
     private lazy var topView:StatusCellTopView = StatusCellTopView()
     
