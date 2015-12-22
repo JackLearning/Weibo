@@ -58,7 +58,10 @@ class StatusCell: UITableViewCell {
         retweetedView.snp_makeConstraints { (make) -> Void in
              make.left.right.equalTo(contentView)
              make.top.equalTo(topView.snp_bottom)
-             make.height.equalTo(50)
+            // 前期调试
+             // make.height.equalTo(50)
+            
+            
             
          }
         
