@@ -51,6 +51,8 @@ private let HomeCellID = "HomeCellID"
         tableView.estimatedRowHeight = 300
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        // 取消分割线
+        tableView.separatorStyle = .None
         
         
     }

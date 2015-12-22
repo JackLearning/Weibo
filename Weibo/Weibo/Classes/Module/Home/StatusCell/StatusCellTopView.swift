@@ -74,6 +74,9 @@ class StatusCellTopView: UIView {
     private func setupUI() {
       
     // 添加子视图
+        
+        addSubview(sepView)
+        
         addSubview(iconImage)
         addSubview(nameLabel)
         addSubview(mbrankImage)
@@ -84,7 +87,22 @@ class StatusCellTopView: UIView {
         addSubview(pictureView)
         
         
+        
+        
+        
      // 设置约束
+        sepView.backgroundColor = UIColor.randomColor()
+        
+        sepView.snp_makeConstraints { (make) -> Void in
+             make.left.right.top.equalTo(self)
+            make.height.equalTo(10)
+        }
+        
+        
+        
+        
+        
+        
      iconImage.snp_makeConstraints { (make) -> Void in
         make.left.equalTo(self.snp_left).offset(StatusCellMarigin)
         make.top.equalTo(self.snp_top).offset(StatusCellMarigin)
@@ -156,6 +174,11 @@ class StatusCellTopView: UIView {
     }
          
   // 懒加载所有的子视图
+    
+    // 设置顶部分割线
+    private lazy var sepView:UIView = UIView()
+    
+    
     private lazy var iconImage:UIImageView = UIImageView(image: UIImage(named:"avatar_default_big"))
  
     private lazy var nameLabel:UILabel = UILabel(title: "哈哈哈", color: themeColor, fontSize: 14)
