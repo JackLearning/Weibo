@@ -51,6 +51,8 @@ class Status: NSObject {
    // 将配图的数组转换成 url 对象
     var imageURLs:[NSURL]?
     
+    var retweeted_status: Status?
+    
     
    // 构造方法 KVC设置值
     init(dict: [String : AnyObject]) { 
@@ -68,7 +70,16 @@ class Status: NSObject {
             return
             
        }
-        
+    
+    if key == "retweeted_status" {
+        if let dict = value as? [String : AnyObject] {
+            retweeted_status = Status(dict: dict)
+            return
+        }
+    }
+    
+    
+    
     // 给其他属性设置值
     super.setValue(value, forKey: key)
         

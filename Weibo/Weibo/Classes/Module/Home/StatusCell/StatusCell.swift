@@ -16,6 +16,9 @@ class StatusCell: UITableViewCell {
         didSet {
        // 给顶部视图 设置模型数据
             topView.status = status
+            
+      // 设置转发微博的模型数据
+        retweetedView.retweetedStatus = status?.retweeted_status
      }
   }
     

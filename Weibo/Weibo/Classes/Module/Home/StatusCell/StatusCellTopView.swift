@@ -15,7 +15,6 @@ class StatusCellTopView: UIView {
     // 定义视图的底部约束属性
     var bottomConstraints: Constraint?
     
-    
     // 定义微博模型属性
     var status: Status? {
         didSet {
@@ -31,8 +30,6 @@ class StatusCellTopView: UIView {
       
     //设置配图视图的 图片的数组 数据源
      pictureView.imageURLs = status?.imageURLs
-            
-      
             
    // 在更新约束之前 将之前的约束先卸载掉 底部约束
       self.bottomConstraints?.uninstall()
@@ -142,7 +139,7 @@ class StatusCellTopView: UIView {
         pictureView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(contentLabel.snp_bottom).offset(StatusCellMarigin)
             make.left.equalTo(contentLabel.snp_left)
-            make.size.equalTo(CGSize(width: 100, height: 100))
+            // make.size.equalTo(CGSize(width: 100, height: 100))
  
         }
         
@@ -150,7 +147,9 @@ class StatusCellTopView: UIView {
      // 对顶部视图的底部进行约束
         self.snp_makeConstraints { (make) -> Void in
             
-            make.bottom.equalTo(pictureView.snp_bottom).offset(StatusCellMarigin)
+            // make.bottom.equalTo(pictureView.snp_bottom).offset(StatusCellMarigin)
+            self.bottomConstraints = make.bottom.equalTo(pictureView.snp_bottom).offset(StatusCellMarigin).constraint
+            
         }
         
         
@@ -171,9 +170,6 @@ class StatusCellTopView: UIView {
     
     // 配图视图
     private lazy var pictureView: StatusPictureView = StatusPictureView()
-    
-    
-    
     
     
 }
