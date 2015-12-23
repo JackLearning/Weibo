@@ -15,7 +15,8 @@ private let HomeCellID = "HomeCellID"
  class HomeTableViewController: BaseTableViewController {
     
     private  lazy var statuses = [Status]()
-    
+   // 添加自定义下拉刷新控件
+    private lazy var refreshView:WBRefreshControl = WBRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,13 +56,18 @@ private let HomeCellID = "HomeCellID"
         tableView.separatorStyle = .None
         
         // 设置系统下拉刷新
-        refreshControl = UIRefreshControl()
+        //refreshControl = UIRefreshControl()
         
         // 绑定事件
-        refreshControl?.addTarget(self, action: "loadData", forControlEvents: .ValueChanged)
+        //refreshControl?.addTarget(self, action: "loadData", forControlEvents: .ValueChanged)
         
         // 设置tableView 的tableFooterView
         tableView.tableFooterView = indicatorView
+        
+        
+        // 添加自定义下拉刷新控件
+        tableView.addSubview(refreshView)
+        refreshView.addTarget(self, action: "loadData", forControlEvents: .ValueChanged)
         
         
     }
