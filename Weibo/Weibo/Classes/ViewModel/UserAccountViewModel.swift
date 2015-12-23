@@ -51,28 +51,21 @@ class UserAccountViewModel: NSObject {
         let urlString = "https://api.weibo.com/oauth2/access_token"
         let parameters = ["client_id":client_id,"client_secret":client_secret,"grant_type":"authorization_code","code":code,"redirect_uri":redirect_uri]
         
-        let AFN = AFHTTPSessionManager()
-        AFN.responseSerializer.acceptableContentTypes?.insert("text/plain")
-        AFN.POST(urlString, parameters: parameters, progress: { (p) -> Void in
-           // print(p)
-            }, success: { (_, result) -> Void in
-                
-                // 获取token 成功
-                // 获取用户信息
-                if let dict = result as?[String : AnyObject] {
-                    
-                    let userAccount = UserAccount(dict: dict)
-                    
-                    print(userAccount)
-                    
-                    self.loadUserInfo(userAccount,finished:finished)
-                    
-                }
-                
-            }) { (_, error) -> Void in
-                 print(error)
-                
+        NetworkTools.sharedTools.requestJSONDict(.POST, urlString: urlString, parameters: parameters) { (dict, error) -> () in
+            
+           print(dict)
+            if error != nil {
+               // 请求失败
+                // 执行失败的回调
                 finished(isSuccess: false)
+                return
+          }
+            
+            // 字典转模型
+            let userAccount = UserAccount(dict: dict!)
+            
+            self.loadUserInfo(userAccount, finished:finished)
+            
         }
         
     }
@@ -87,29 +80,30 @@ class UserAccountViewModel: NSObject {
         // 制定中不能够存放nil [NSNull null]
         if let token = account.access_token,userId = account.uid {
             
-            let parameters = ["access_token": token, "uid": userId]
-            let AFN = AFHTTPSessionManager()
-            AFN.GET(urlString, parameters: parameters, progress: { (_) -> Void in
-                
-                }, success: { (_, result) -> Void in
-                    if let dict = result {
-                        //获取用户信息
-                        let avatar_large = dict["avatar_large"] as! String
-                        let name = dict["name"] as! String
-                        //给account 对象的属性做赋值操作
-                        account.name = name
-                        account.avatar_large = avatar_large
-                        //获取用户信息的完整自定义对象
-                        //存储自定义对象
-                        account.saveAccount()
-                        //执行成功的回调
-                        finished(isSuccess: true)
-                    }
-                }) { (_, error) -> Void in
-                    print(error)
-                    finished(isSuccess: false)
+         let parameters = ["access_token": token, "uid": userId]
+            
+         NetworkTools.sharedTools.requestJSONDict(.GET, urlString: urlString, parameters: parameters, finished: { (dict, error) -> () in
+            
+            if error != nil {
+                // 执行失败的回调
+                finished(isSuccess: false)
+                return
             }
-        }
+       // 获取用户信息
+            let avatar_large = dict!["avatar_large"] as! String
+            let name = dict!["name"] as! String
+            //给account 对象的属性做赋值操作
+            account.name = name
+            account.avatar_large = avatar_large
+            //获取用户信息的完整自定义对象
+            //存储自定义对象
+            account.saveAccount()
+            //执行成功的回调
+            finished(isSuccess: true)
+            
+        })
+           
+     }
         
     }
 }
