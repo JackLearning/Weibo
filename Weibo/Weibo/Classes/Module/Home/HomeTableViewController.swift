@@ -54,67 +54,94 @@ private let HomeCellID = "HomeCellID"
         // 取消分割线
         tableView.separatorStyle = .None
         
+        // 设置系统下拉刷新
+        refreshControl = UIRefreshControl()
+        
+        // 绑定事件
+        refreshControl?.addTarget(self, action: "loadData", forControlEvents: .ValueChanged)
+        
+        // 设置tableView 的tableFooterView
+        tableView.tableFooterView = indicatorView
+        
         
     }
     
         
     // 第三方框架的简单使用
     
-    private func  loadData() {
-        // 实现网络请求
-        let AFN = AFHTTPSessionManager()
+  @objc   private func  loadData() {
+    
+      //使用viewmodel获取网络数据
+      //since_id 和 max_id 是互斥条件 有且只能传一个
+    var max_id :Int64 = 0
+    var since_id :Int64 = 0
+    
+    // 需要数据  小菊花是否正在转动 判断是否上拉加载更多
+    if indicatorView.isAnimating() {
+     
+        // 上拉加载更多数据
+        max_id = statuses.last?.id ?? 0
+    }else {
         
-        // get请求
-        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        since_id = statuses.first?.id ?? 0
         
-        // 判断token是否为空
-        guard let token = UserAccountViewModel().token else {
-            
-            print("token为空")
-            SVProgressHUD.showInfoWithStatus("请重新登录")
-            return
-        }
+    }
+    
+ StatusListViewModel.loadHomePageData(since_id, max_id: max_id) { (statuses) -> () in
+    
+    // 网络加载结束 关闭动画
+    self.refreshControl?.endRefreshing()
+    
+    guard let list = statuses else {
+        return
+    }
+    
+   // 测试打印
+    print("---------------")
+    print(list.count)
+    if since_id > 0 {
+        // 下拉刷新 新数据的操作 执行添加的操作
+        self.statuses = list + self.statuses
+    }else if max_id > 0{
+        // 上拉加载更多数据
+        self.statuses += list
+        // 数据加载完毕之后 应该结束动画 不然只能加载一页数据
+        self.indicatorView.stopAnimating()
         
-        let parameters = ["access_token" : token]
+    } else {
+        // 首次加载
+        self.statuses = list
         
-        AFN.GET(urlString, parameters: parameters, progress: { (p) -> Void in
-            print(p)
-            }, success: { (task, result) -> Void in
-                // 在success回调中 做数据解析 需要判断result 能否转化为字典
-                guard let dict = result as? [String:AnyObject] else {
-                    
-                    print("数据不合法")
-                    SVProgressHUD.showInfoWithStatus("您的网络出错，请稍后再试")
-                    return
-                    
-                }
-                // 获取数据成功
-                // 通过键值的方式 获取statuses对应的数组
-                if let array  = dict["statuses"] as? [[String:AnyObject]] {
-                    
-                   print(array)
-                    
-                    // 遍历数组中的所有字典，完成字典转模型
-                    var list = [Status]()
-                    for item in array {
-                        
-                        let s = Status(dict: item)
-                        // print(s)
-                        list.append(s)
-                  }
-                    self.statuses = list
-                    // 刷新表视图
-                    self.tableView.reloadData()
-                }
-                
-            }) { (task, error) -> Void in
-                print(error)
-        }
-      }
+    }
+  // 执行刷新
+    self.tableView.reloadData()
+  
+  }
+    
+ }
+    
+    // 懒加载小菊花
+    private lazy var indicatorView:UIActivityIndicatorView = {
+       let i = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        
+        // 开始动画
+//        i.startAnimating()
+        return i
+        
+    }()
+    
+    
   }
 
 ////MARK: tableView 数据源的协议方法
 extension HomeTableViewController {
+    
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+         return 1
+    }
+    
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statuses.count
@@ -128,8 +155,14 @@ extension HomeTableViewController {
         
         cell.status = statuses[indexPath.row]
         
-       print(statuses[indexPath.row].imageURLs!.count)
+       // print(statuses[indexPath.row].imageURLs!.count)
         
+        if !indicatorView.isAnimating() && indexPath.row == statuses.count - 1 {
+           // 滑动到最后一行 并且小菊花没有转动的情况下 自动加载数据
+           // 在加载数据之前 转动小菊花
+            indicatorView.startAnimating()
+            loadData()
+        }
         
         return cell
     }

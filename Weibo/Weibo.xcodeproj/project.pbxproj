@@ -32,6 +32,7 @@
 		7184756B1C270FCB00162844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7184756A1C270FCB00162844 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		719670931C2596B4003088C2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719670921C2596B4003088C2 /* Status.swift */; settings = {ASSET_TAGS = (); }; };
 		71A99ECC1C22D55900918AB2 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A99ECB1C22D55900918AB2 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		71B2DE061C2A66B8005310A0 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2DE051C2A66B8005310A0 /* StatusListViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		71B442E11C28656B007A2FCD /* StatusRetweetedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B442E01C28656B007A2FCD /* StatusRetweetedView.swift */; settings = {ASSET_TAGS = (); }; };
 		71E731501C27224600AB1DAA /* StatusCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E7314F1C27224600AB1DAA /* StatusCellBottomView.swift */; settings = {ASSET_TAGS = (); }; };
 		E4DAD1EFF2284C1AFFF701DA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8271AAECA86247E833D819 /* Pods.framework */; };
@@ -66,6 +67,7 @@
 		7184756A1C270FCB00162844 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		719670921C2596B4003088C2 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		71A99ECB1C22D55900918AB2 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		71B2DE051C2A66B8005310A0 /* StatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		71B442E01C28656B007A2FCD /* StatusRetweetedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusRetweetedView.swift; sourceTree = "<group>"; };
 		71E7314F1C27224600AB1DAA /* StatusCellBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCellBottomView.swift; sourceTree = "<group>"; };
 		AE8271AAECA86247E833D819 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				18F551E71C2039A800283E00 /* UserAccountViewModel.swift */,
+				71B2DE051C2A66B8005310A0 /* StatusListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				18F551E61C201EAF00283E00 /* UserAccount.swift in Sources */,
 				71467E821C1DCBED009599F3 /* Common.swift in Sources */,
 				188961401C279B6B00F9B9CF /* StatusPictureView.swift in Sources */,
+				71B2DE061C2A66B8005310A0 /* StatusListViewModel.swift in Sources */,
 				1893DDE11C1D875600175973 /* MaintabBar.swift in Sources */,
 				18D540911C29751F008D00F7 /* NetworkTools.swift in Sources */,
 				7184756B1C270FCB00162844 /* User.swift in Sources */,

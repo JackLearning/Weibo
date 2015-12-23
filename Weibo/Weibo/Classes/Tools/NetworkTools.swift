@@ -42,7 +42,7 @@ class NetworkTools: AFHTTPSessionManager {
                 // 请求成功的回调
                 print(result)
                 
-                guard let dict = result as?[String : AnyObject] else {
+                guard let dict = result as? [String : AnyObject] else {
                  // 不能转换成字典数据
                  // 执行失败的回调
                 // domain:反转的域名 com.baidu.error
@@ -55,14 +55,14 @@ class NetworkTools: AFHTTPSessionManager {
                     
                     return
                     
-                    
                 }
-                
+             // 执行成功的回调
+                finished(dict: dict, error: nil)
                 
             }) { (_, error) -> Void in
                  // 请求失败的回调
                 print(error)
-                
+                // 请求失败的回调
                 finished(dict: nil, error: error)
                 
         }
@@ -89,6 +89,9 @@ class NetworkTools: AFHTTPSessionManager {
                         return
                     }
                     
+                    // 执行成功的回调
+                  finished(dict: dict, error: nil)
+                                  
                 }, failure: { (_, error) -> Void in
                     // 执行失败的回调
                     finished(dict: nil, error: error)
