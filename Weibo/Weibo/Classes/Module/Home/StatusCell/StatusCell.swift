@@ -102,8 +102,8 @@ class StatusCell: UITableViewCell {
                
         bottomView.snp_makeConstraints { (make) -> Void in
             make.left.right.equalTo(self)
-            make.top.equalTo(retweetedView.snp_bottom)
-            make.height.equalTo(40)
+            self.bottomViewTopConstraints = make.top.equalTo(retweetedView.snp_bottom).constraint
+           make.height.equalTo(40)
             
         }
             
