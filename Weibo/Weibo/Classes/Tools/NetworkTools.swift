@@ -10,6 +10,11 @@ import AFNetworking
 
 let dataErrorDomain = "com.baidu.data.error"
 
+// 枚举任意类型
+enum HTTPMethod: String {
+   case GET = "GET"
+   case POST = "POST"
+ }
 
 class NetworkTools: AFHTTPSessionManager {
     
@@ -26,7 +31,9 @@ class NetworkTools: AFHTTPSessionManager {
     }()
     
   // 网络请求的核心方法封装
-    func requestJSONDict(urlString:String,parameters:[String : String]?,finished:(dict: [String : AnyObject]?,error: NSError?) ->()) {
+    func requestJSONDict(method:HTTPMethod,urlString:String,parameters:[String : String]?,finished:(dict: [String : AnyObject]?,error: NSError?) ->()) {
+        
+        if method == HTTPMethod.POST {
         
        // 发送POST请求
         POST(urlString, parameters: parameters, progress: { (p) -> Void in
@@ -59,11 +66,36 @@ class NetworkTools: AFHTTPSessionManager {
                 finished(dict: nil, error: error)
                 
         }
-        
-        
     }
-  
-}
-
+        
+        else {
+            
+            GET(urlString, parameters: parameters, progress: { (p) -> Void in
+                 print(p)
+                }, success: { (_, result) -> Void in
+                     print(result)
+                    
+                    guard let dict = result as?[String : AnyObject] else {
+                        // 不能转换成字典数据
+                        // 执行失败的回调
+                        // domain:反转的域名 com.baidu.error
+                        // code : 错误状态码 自定义错误信息 一般使用 负数
+                        let myError = NSError(domain: dataErrorDomain, code: -100000, userInfo: [NSLocalizedDescriptionKey : "数据不合法"])
+                        
+                        print(myError)
+                        
+                        finished(dict: nil, error: myError)
+                        
+                        return
+                    }
+                    
+                }, failure: { (_, error) -> Void in
+                    // 执行失败的回调
+                    finished(dict: nil, error: error)
+                     print(error)
+            })
+            
+        }
+     }
+  }
  
-
