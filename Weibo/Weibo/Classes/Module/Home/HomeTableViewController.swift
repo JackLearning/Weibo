@@ -96,7 +96,7 @@ private let HomeCellID = "HomeCellID"
  StatusListViewModel.loadHomePageData(since_id, max_id: max_id) { (statuses) -> () in
     
     // 网络加载结束 关闭动画
-    self.refreshControl?.endRefreshing()
+    self.refreshView.endRefreshing()
     
     guard let list = statuses else {
         return
