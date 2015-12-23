@@ -11,6 +11,15 @@ import SnapKit
 
 class StatusCellBottomView: UIView {
    
+    @objc private func commentBtnClick() {
+        print(__FUNCTION__)
+       
+        let temp = TempViewController()
+        
+        self.navController()?.pushViewController(temp, animated: true)
+        
+    }
+    
     //MARK 定义外部模型属性
     // MARK 重写构造方法
     override init(frame: CGRect) {
@@ -86,6 +95,15 @@ class StatusCellBottomView: UIView {
             
             
         }
+      
+    // 添加点击事件
+     commentBtn.addTarget(self, action: "commentBtnClick", forControlEvents: .TouchUpInside)
+        
+        
+        
+        
+        
+        
      }
     
  // 生成分割视图
