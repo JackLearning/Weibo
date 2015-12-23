@@ -128,7 +128,15 @@ class WBRefreshControl: UIControl {
  
     func endRefreshing() {
      
-        status = .Normal
+        
+        let delta =  dispatch_time(DISPATCH_TIME_NOW, Int64(1) * Int64(NSEC_PER_SEC))
+        
+        dispatch_after(delta, dispatch_get_main_queue()) { () -> Void in
+            
+            self.status = .Normal
+        }
+        
+        
     }
     
    
