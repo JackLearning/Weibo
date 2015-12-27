@@ -23,7 +23,7 @@ class OAuthViewController: UIViewController {
     
     @objc private func defaultAccount() {
         
-        let jsString = "document.getElementById('userId').value = 'zhuzongchao666666@163.com',document.getElementById('passwd').value = 'a999999999'"
+        let jsString = "document.getElementById('userId').value = 'leiggee@126.com',document.getElementById('passwd').value = 'oyonomg'"
         
         webView.stringByEvaluatingJavaScriptFromString(jsString)
         
